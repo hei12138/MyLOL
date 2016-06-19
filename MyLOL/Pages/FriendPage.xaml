@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="MyLOL.FriendPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyLOL"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FFEFEFF4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF242937">
+            <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="好友"/>
+        </Grid>
+        <Button Grid.Row="1" HorizontalAlignment="Stretch">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Padding="12" Background="White" BorderThickness="0,0.5,0,0.5" BorderBrush="Green">
+                        <TextBlock Text="开发中" FontSize="18"/>
+                    </Border>     
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Page>

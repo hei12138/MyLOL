@@ -1,0 +1,34 @@
+﻿<control:PageBase
+    x:Class="MyLOL.Pages.NewsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyLOL.Pages"
+    xmlns:control="using:MyLOL.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Grid Background="#FFF0F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF242937">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <SymbolIcon HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Symbol="Back"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="资讯详情"/>
+        </Grid>
+        <WebView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="mywebview"/>
+    </Grid>
+</control:PageBase>

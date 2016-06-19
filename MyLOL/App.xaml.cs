@@ -14,6 +14,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MyLOL.Pages;
+using Windows.Storage;
+using Windows.UI.ViewManagement;
+using Windows.UI;
 
 namespace MyLOL
 {
@@ -22,12 +26,18 @@ namespace MyLOL
     /// </summary>
     sealed partial class App : Application
     {
+
+        const string SETTING_IS_DISPLAY_STATUS = "is display statusbar";
+        ApplicationDataContainer rootContainer = ApplicationData.Current.LocalSettings;
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
         /// 已执行，逻辑上等同于 main() 或 WinMain()。
         /// </summary>
         public App()
         {
+            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+                Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -37,8 +47,57 @@ namespace MyLOL
         /// 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e">有关启动请求和过程的详细信息。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //判断是否显示状态栏
+            object isdisplay;
+            if (rootContainer.Values.TryGetValue(SETTING_IS_DISPLAY_STATUS, out isdisplay))
+            {
+                //存在该键值
+
+                if ((bool)isdisplay)
+                {
+                    //显示状态栏
+                    if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent(typeof(StatusBar).ToString()))
+                    {
+                        StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+                        //await statusBar.HideAsync();
+                        statusBar.BackgroundColor = Color.FromArgb(255, 36, 41, 55);
+                        statusBar.ForegroundColor = Colors.White;
+                        statusBar.BackgroundOpacity = 1;
+                        await statusBar.ShowAsync();
+                    }
+                }
+                else
+                {
+                    //不显示状态栏
+                    if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent(typeof(StatusBar).ToString()))
+                    {
+                        StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+                        statusBar.BackgroundColor = Color.FromArgb(255, 36, 41, 55);
+                        await statusBar.HideAsync();
+                    }
+                }
+            }
+            else
+            {
+                //不存在该键值
+                rootContainer.Values[SETTING_IS_DISPLAY_STATUS] = true;
+                if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent(typeof(StatusBar).ToString()))
+                {
+                    StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+                    //await statusBar.HideAsync();
+                    statusBar.BackgroundColor = Color.FromArgb(255, 36, 41, 55);
+                    statusBar.ForegroundColor = Colors.White;
+                    statusBar.BackgroundOpacity = 1;
+                    await statusBar.ShowAsync();
+                }
+            }
+            //设置最小宽度
+            //ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Width = 400, Height = 700 });
+            
+
+
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{7e041464-56a0-4d73-959d-e74d25d8e1c4}</ProjectGuid>
+    <ProjectGuid>{7E041464-56A0-4D73-959D-E74D25D8E1C4}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyLOL</RootNamespace>
@@ -16,9 +16,10 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    
     <PackageCertificateKeyFile>MyLOL_TemporaryKey.pfx</PackageCertificateKeyFile>
-    
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Auto</AppxBundle>
+    <AppxBundlePlatforms>arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,33 +92,156 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Resources\123.jpg" />
+    <Content Include="Resources\arrow_fold_down_role_center_normal.png" />
+    <Content Include="Resources\barcode_icon.png" />
+    <Content Include="Resources\DesoverPage\battle_video_large.png" />
+    <Content Include="Resources\DesoverPage\battle_video_normal.png" />
+    <Content Include="Resources\DesoverPage\hero_time.png" />
+    <Content Include="Resources\DesoverPage\honor_snapshot_big.png" />
+    <Content Include="Resources\DesoverPage\net_cafe.png" />
+    <Content Include="Resources\DesoverPage\personal_msgs_entry.png" />
+    <Content Include="Resources\DesoverPage\search_icon.png" />
+    <Content Include="Resources\DesoverPage\users_nearby.png" />
+    <Content Include="Resources\DesoverPage\users_recently_play_with.png" />
+    <Content Include="Resources\EDBD09896BCB31B13BC814C6C366545B.png" />
+    <Content Include="Resources\gender_man.png" />
+    <Content Include="Resources\gender_woman.png" />
+    <Content Include="Resources\icon_1.jpg" />
+    <Content Include="Resources\icon_2.jpg" />
+    <Content Include="Resources\MainPage\personal_msgs_entry.png" />
+    <Content Include="Resources\MainPage\tab_discovery.png" />
+    <Content Include="Resources\MainPage\tab_discovery_checked.png" />
+    <Content Include="Resources\MainPage\tab_friend.png" />
+    <Content Include="Resources\MainPage\tab_friend_checked.png" />
+    <Content Include="Resources\MainPage\tab_me.png" />
+    <Content Include="Resources\MainPage\tab_me_checked.png" />
+    <Content Include="Resources\MainPage\tab_news.png" />
+    <Content Include="Resources\MainPage\tab_news_checked.png" />
+    <Content Include="Resources\MePage\arrow_right.png" />
+    <Content Include="Resources\MePage\continuous_honor_10.png" />
+    <Content Include="Resources\MePage\continuous_honor_10_winner.png" />
+    <Content Include="Resources\MePage\continuous_honor_3.png" />
+    <Content Include="Resources\MePage\continuous_honor_4.png" />
+    <Content Include="Resources\MePage\continuous_honor_5.png" />
+    <Content Include="Resources\MePage\continuous_honor_6.png" />
+    <Content Include="Resources\MePage\continuous_honor_7.png" />
+    <Content Include="Resources\MePage\continuous_honor_8.png" />
+    <Content Include="Resources\MePage\continuous_honor_9.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_10.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_3.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_4.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_5.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_6.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_7.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_8.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_9.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_failure.png" />
+    <Content Include="Resources\MePage\continuous_honor_failed_more.png" />
+    <Content Include="Resources\MePage\continuous_honor_more.png" />
+    <Content Include="Resources\MePage\edit_good_at.png" />
+    <Content Include="Resources\MePage\edit_good_at_press.png" />
+    <Content Include="Resources\MePage\first_win_arrow.png" />
+    <Content Include="Resources\MePage\first_win_bkg_normal.png" />
+    <Content Include="Resources\MePage\first_win_bkg_pressed.png" />
+    <Content Include="Resources\MePage\hero_text_tag.png" />
+    <Content Include="Resources\MePage\Jayce.png" />
+    <Content Include="Resources\MePage\online_notice_enable.png" />
+    <Content Include="Resources\MePage\rankImage\dan_bronze.png" />
+    <Content Include="Resources\MePage\rankImage\dan_challenger.png" />
+    <Content Include="Resources\MePage\rankImage\dan_diamond.png" />
+    <Content Include="Resources\MePage\rankImage\dan_gold.png" />
+    <Content Include="Resources\MePage\rankImage\dan_master.png" />
+    <Content Include="Resources\MePage\rankImage\dan_none.png" />
+    <Content Include="Resources\MePage\rankImage\dan_platinum.png" />
+    <Content Include="Resources\MePage\rankImage\dan_silver.png" />
+    <Content Include="Resources\MePage\rankImage\dan_sublevel_1.png" />
+    <Content Include="Resources\MePage\rankImage\dan_sublevel_2.png" />
+    <Content Include="Resources\MePage\rankImage\dan_sublevel_3.png" />
+    <Content Include="Resources\MePage\rankImage\dan_sublevel_4.png" />
+    <Content Include="Resources\MePage\rankImage\dan_sublevel_5.png" />
+    <Content Include="Resources\MePage\view_battle_detail_normal.9.png" />
+    <Content Include="Resources\region_icon_role_center.png" />
+    <Content Include="Resources\role_detail_header.png" />
+    <Content Include="Resources\share_role_center_normal.png" />
+    <Content Include="Resources\sns_info_background.jpg" />
+    <Content Include="Resources\sns_info_entry_self.png" />
+    <Content Include="Resources\start_up.jpg" />
+    <Content Include="Resources\test_bkg.png" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Controls\ButtonForLOL.cs" />
+    <Compile Include="Controls\ColorDisplayer.cs" />
+    <Compile Include="Controls\PageBase.cs" />
+    <Compile Include="Controls\PowerDisplayer.cs" />
+    <Compile Include="Controls\TapButton.cs" />
+    <Compile Include="Converters\indexToColorConverter.cs" />
+    <Compile Include="Helper\NewsHelper.cs" />
+    <Compile Include="Helper\SerializeHelper.cs" />
+    <Compile Include="Models\NewsInfo.cs" />
+    <Compile Include="Pages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BlankPage2.xaml.cs">
+      <DependentUpon>BlankPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomPage.xaml.cs">
+      <DependentUpon>CustomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FriendPage.xaml.cs">
+      <DependentUpon>FriendPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MePage.xaml.cs">
+      <DependentUpon>MePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BlankPage1.xaml.cs">
+      <DependentUpon>BlankPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DeservePage.xaml.cs">
+      <DependentUpon>DeservePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FindPage.xaml.cs">
+      <DependentUpon>FindPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewsPage.xaml.cs">
+      <DependentUpon>NewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\InfoViewModel.cs" />
+    <Compile Include="ViewModels\MeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    
     <None Include="MyLOL_TemporaryKey.pfx" />
-    
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
@@ -125,16 +249,68 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BlankPage2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FriendPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BlankPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DeservePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FindPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
-
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
