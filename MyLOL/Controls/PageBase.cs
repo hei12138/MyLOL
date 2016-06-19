@@ -40,6 +40,7 @@ namespace MyLOL.Controls
             {
                 Duration = new Duration(TimeSpan.FromMilliseconds(120)),
                 //此处由于OnNavigateTo获取不到ActualWidth，故设置为400
+                //test
                 From = 400,
                 To = 0
             };
