@@ -25,38 +25,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <control:TapButton x:Name="btn_info" Background="Transparent" Grid.Column="0" Click="btn_frame_clicked" Text="资讯">
-                    <control:TapButton.Source>
-                        <BitmapImage UriSource="ms-appx:///Resources/MainPage/tab_news_checked.png"></BitmapImage>
-                    </control:TapButton.Source>
-                </control:TapButton>
-                <control:TapButton x:Name="btn_friend" Background="Transparent" Grid.Column="1" Click="btn_frame_clicked" Text="好友">
-                    <control:TapButton.Source>
-                        <BitmapImage UriSource="ms-appx:///Resources/MainPage/tab_friend.png"></BitmapImage>
-                    </control:TapButton.Source>
-                </control:TapButton>
-                <control:TapButton x:Name="btn_find" Background="Transparent" Grid.Column="2" Click="btn_frame_clicked" Text="发现">
-                    <control:TapButton.Source>
-                        <BitmapImage UriSource="ms-appx:///Resources/MainPage/tab_discovery.png"></BitmapImage>
-                    </control:TapButton.Source>
-                </control:TapButton>
-                <control:TapButton x:Name="btn_me" Background="Transparent" Grid.Column="3" Click="btn_frame_clicked" Text="我">
-                    <control:TapButton.Source>
-                        <BitmapImage UriSource="ms-appx:///Resources/MainPage/tab_me.png"></BitmapImage>
-                    </control:TapButton.Source>
-                </control:TapButton>
-                <!--<Button Background="Transparent" x:Name="btn_me" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btn_frame_clicked">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Border CornerRadius="4" Padding="6" Background="{TemplateBinding Button.Background}">
-                                <StackPanel Orientation="Vertical">
-                                    <Image Width="35" Source="ms-appx:///Resources/MainPage/tab_me.png" />
-                                    <TextBlock HorizontalAlignment="Center" Text="我" FontSize="14" Margin="2"/>
-                                </StackPanel>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>-->
+                <control:TapButton x:Name="btn_info" IsClicked="False" Grid.Column="0" Click="btn_frame_clicked" Text="资讯" ImageSourceNormal="ms-appx:///Resources/MainPage/tab_news.png" ImageSourcePressed="ms-appx:///Resources/MainPage/tab_news_checked.png"/>
+                <control:TapButton x:Name="btn_friend" IsClicked="False" Grid.Column="1" Click="btn_frame_clicked" Text="好友" ImageSourceNormal="ms-appx:///Resources/MainPage/tab_friend.png" ImageSourcePressed="ms-appx:///Resources/MainPage/tab_friend_checked.png" />
+                <control:TapButton x:Name="btn_find" IsClicked="False" Grid.Column="2" Click="btn_frame_clicked" Text="发现" ImageSourceNormal="ms-appx:///Resources/MainPage/tab_discovery.png" ImageSourcePressed="ms-appx:///Resources/MainPage/tab_discovery_checked.png"/>
+                <control:TapButton x:Name="btn_me" IsClicked="False" Grid.Column="3" Click="btn_frame_clicked" Text="我" ImageSourceNormal="ms-appx:///Resources/MainPage/tab_me.png" ImageSourcePressed="ms-appx:///Resources/MainPage/tab_me_checked.png"/>
             </Grid>
         </Border>
         <Frame Grid.RowSpan="2" x:Name="pageFrame"/>

@@ -103,6 +103,7 @@
     <Content Include="Resources\123.jpg" />
     <Content Include="Resources\arrow_fold_down_role_center_normal.png" />
     <Content Include="Resources\barcode_icon.png" />
+    <Content Include="Resources\barcode_icon_press.png" />
     <Content Include="Resources\DesoverPage\battle_video_large.png" />
     <Content Include="Resources\DesoverPage\battle_video_normal.png" />
     <Content Include="Resources\DesoverPage\hero_time.png" />
@@ -112,9 +113,13 @@
     <Content Include="Resources\DesoverPage\search_icon.png" />
     <Content Include="Resources\DesoverPage\users_nearby.png" />
     <Content Include="Resources\DesoverPage\users_recently_play_with.png" />
-    <Content Include="Resources\EDBD09896BCB31B13BC814C6C366545B.png" />
-    <Content Include="Resources\gender_man.png" />
-    <Content Include="Resources\gender_woman.png" />
+    <Content Include="Resources\headimages\profileIcon1209.jpg" />
+    <Content Include="Resources\heroheadimage\126_Web_0.jpg" />
+    <Content Include="Resources\heroheadimage\131_Web_0.jpg" />
+    <Content Include="Resources\heroheadimage\157_Web_0.jpg" />
+    <Content Include="Resources\heroheadimage\222_Web_0.jpg" />
+    <Content Include="Resources\heroheadimage\238_Web_0.jpg" />
+    <Content Include="Resources\heroheadimage\39_Web_0.jpg" />
     <Content Include="Resources\icon_1.jpg" />
     <Content Include="Resources\icon_2.jpg" />
     <Content Include="Resources\MainPage\personal_msgs_entry.png" />
@@ -126,6 +131,24 @@
     <Content Include="Resources\MainPage\tab_me_checked.png" />
     <Content Include="Resources\MainPage\tab_news.png" />
     <Content Include="Resources\MainPage\tab_news_checked.png" />
+    <Content Include="Resources\matchIcons\arrow_right_gray_dark.png" />
+    <Content Include="Resources\matchIcons\battle_assist_icon_escape.png" />
+    <Content Include="Resources\matchIcons\battle_assist_icon_gray.png" />
+    <Content Include="Resources\matchIcons\battle_assist_icon_lose.png" />
+    <Content Include="Resources\matchIcons\battle_assist_icon_win.png" />
+    <Content Include="Resources\matchIcons\battle_death_icon_escape.png" />
+    <Content Include="Resources\matchIcons\battle_death_icon_gray.png" />
+    <Content Include="Resources\matchIcons\battle_death_icon_lose.png" />
+    <Content Include="Resources\matchIcons\battle_death_icon_win.png" />
+    <Content Include="Resources\matchIcons\battle_kill_icon_escape.png" />
+    <Content Include="Resources\matchIcons\battle_kill_icon_gray.png" />
+    <Content Include="Resources\matchIcons\battle_kill_icon_lose.png" />
+    <Content Include="Resources\matchIcons\battle_kill_icon_win.png" />
+    <Content Include="Resources\matchIcons\match_win.9.png" />
+    <Content Include="Resources\MePage\ability_qa_normal.png" />
+    <Content Include="Resources\MePage\ability_qa_press.png" />
+    <Content Include="Resources\MePage\arrow_fold_down_role_center_normal.png" />
+    <Content Include="Resources\MePage\arrow_fold_down_role_center_pressed.png" />
     <Content Include="Resources\MePage\arrow_right.png" />
     <Content Include="Resources\MePage\continuous_honor_10.png" />
     <Content Include="Resources\MePage\continuous_honor_10_winner.png" />
@@ -152,9 +175,12 @@
     <Content Include="Resources\MePage\first_win_arrow.png" />
     <Content Include="Resources\MePage\first_win_bkg_normal.png" />
     <Content Include="Resources\MePage\first_win_bkg_pressed.png" />
+    <Content Include="Resources\MePage\first_win_icon.png" />
     <Content Include="Resources\MePage\hero_text_tag.png" />
     <Content Include="Resources\MePage\Jayce.png" />
     <Content Include="Resources\MePage\online_notice_enable.png" />
+    <Content Include="Resources\MePage\peoplenearby_man.png" />
+    <Content Include="Resources\MePage\peoplenearby_woman.png" />
     <Content Include="Resources\MePage\rankImage\dan_bronze.png" />
     <Content Include="Resources\MePage\rankImage\dan_challenger.png" />
     <Content Include="Resources\MePage\rankImage\dan_diamond.png" />
@@ -168,7 +194,13 @@
     <Content Include="Resources\MePage\rankImage\dan_sublevel_3.png" />
     <Content Include="Resources\MePage\rankImage\dan_sublevel_4.png" />
     <Content Include="Resources\MePage\rankImage\dan_sublevel_5.png" />
+    <Content Include="Resources\MePage\setting_normal.png" />
+    <Content Include="Resources\MePage\setting_pressed.png" />
+    <Content Include="Resources\MePage\share_role_center_normal.png" />
+    <Content Include="Resources\MePage\share_role_center_pressed.png" />
     <Content Include="Resources\MePage\view_battle_detail_normal.9.png" />
+    <Content Include="Resources\nav_back_normal.png" />
+    <Content Include="Resources\nav_back_pressed.png" />
     <Content Include="Resources\region_icon_role_center.png" />
     <Content Include="Resources\role_detail_header.png" />
     <Content Include="Resources\share_role_center_normal.png" />
@@ -184,18 +216,26 @@
     </Compile>
     <Compile Include="Controls\ButtonForLOL.cs" />
     <Compile Include="Controls\ColorDisplayer.cs" />
+    <Compile Include="Controls\CommonHelper.cs" />
+    <Compile Include="Controls\CustomToast.cs" />
+    <Compile Include="Controls\FlipView1.cs" />
+    <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\MyPivot.cs" />
     <Compile Include="Controls\PageBase.cs" />
     <Compile Include="Controls\PowerDisplayer.cs" />
     <Compile Include="Controls\TapButton.cs" />
-    <Compile Include="Converters\indexToColorConverter.cs" />
+    <Compile Include="Converters\GameStatusToFillConverter.cs" />
+    <Compile Include="Converters\GameStatusToString.cs" />
+    <Compile Include="Converters\GameToTimesConverter.cs" />
+    <Compile Include="Converters\IsClickedToOpacityConverter.cs" />
+    <Compile Include="Converters\LevelConverter.cs" />
+    <Compile Include="Converters\WinProToStringConverter.cs" />
     <Compile Include="Helper\NewsHelper.cs" />
     <Compile Include="Helper\SerializeHelper.cs" />
+    <Compile Include="Models\MatchInfo.cs" />
     <Compile Include="Models\NewsInfo.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\BlankPage2.xaml.cs">
-      <DependentUpon>BlankPage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CustomPage.xaml.cs">
       <DependentUpon>CustomPage.xaml</DependentUpon>
@@ -212,9 +252,6 @@
     <Compile Include="Pages\MePage.xaml.cs">
       <DependentUpon>MePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\DeservePage.xaml.cs">
       <DependentUpon>DeservePage.xaml</DependentUpon>
     </Compile>
@@ -226,6 +263,9 @@
     </Compile>
     <Compile Include="Pages\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SeverSelecterPage.xaml.cs">
+      <DependentUpon>SeverSelecterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\InfoViewModel.cs" />
@@ -253,10 +293,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\BlankPage2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\CustomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,10 +313,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\BlankPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\DeservePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -294,6 +326,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SeverSelecterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

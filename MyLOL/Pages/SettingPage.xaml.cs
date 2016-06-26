@@ -65,14 +65,7 @@ namespace MyLOL.Pages
 
         private void btn_about_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
-            //在此需要将pageFrame的页面内容设为不可用
-            //var str= this.Frame.Name;
-            //this.Frame.Focus(FocusState.Unfocused);
-            //从此处入手，可设置不与用户交互
-            //this.Frame.IsEnabled = false;
-            //不可用
-            //this.Frame.ManipulationMode = ManipulationModes.None;
+            
             frame.Navigate(typeof(About));
             
            
@@ -126,10 +119,15 @@ namespace MyLOL.Pages
                 await statusBar.HideAsync();
             }
         }
-
+        //自定义页面
         private void btn_custom_Click(object sender, RoutedEventArgs e)
         {
             frame.Navigate(typeof(CustomPage));
+        }
+        //选择服务器页面
+        private void btn_severSelecter_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(typeof(SeverSelecterPage));
         }
     }
 }

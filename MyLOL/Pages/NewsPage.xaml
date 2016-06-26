@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     
-    <Grid Background="#FFF0F0F0">
+    <Grid x:Name="rootGrid" Background="#FFF0F0F0">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="*"/>
@@ -18,15 +18,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid>
-                            <SymbolIcon HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Symbol="Back"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <control:ImageButton Height="25" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
             <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="资讯详情"/>
         </Grid>
         <WebView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="mywebview"/>

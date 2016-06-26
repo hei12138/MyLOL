@@ -1,4 +1,5 @@
 ﻿using MyLOL.Pages;
+using MyLOL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,29 +24,69 @@ namespace MyLOL
     /// </summary>
     public sealed partial class MePage : Page
     {
+        //TODO 自定义的imageButton 可以显示图像，以及按下的图像
+         
 
         //TODO
         //考虑将此页面做成自定义面板
+        public MeViewModel MeViewModel { get; set; }
+        private TranslateTransform _tt;
 
 
         Frame frame;
         object list;
         public MePage()
         {
-            this.InitializeComponent();
+            MeViewModel = new MeViewModel();
+            InitializeComponent();
+            flip.AddHandler(PointerWheelChangedEvent, new PointerEventHandler(OnChanged), true);
+            _tt = header.RenderTransform as TranslateTransform;
+            if (_tt == null)
+            {
+                //似乎是在这里将位移值给页面
+                header.RenderTransform = _tt = new TranslateTransform();
+            }
+        }
+        private void OnChanged(object sender, PointerRoutedEventArgs e)
+        {
+            if (e.GetCurrentPoint(flip).Properties.MouseWheelDelta < 0)
+            {
+                scroll.ChangeView(0, scroll.VerticalOffset + 75, 1);
+            }
+            else
+            {
+                scroll.ChangeView(0, scroll.VerticalOffset - 75, 1);
+            }
+            e.Handled = true;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             list = e.Parameter;
             frame = (e.Parameter as List<Frame>)[0];
-            Frame frame2= (e.Parameter as List<Frame>)[1];
+            Frame frame2 = (e.Parameter as List<Frame>)[1];
+            DataContext = MeViewModel;
         }
 
         private void btn_setting_Click(object sender, RoutedEventArgs e)
         {
-            //meFrame.Navigate(typeof(SettingPage));
-            frame.Navigate(typeof(SettingPage),list);
+            frame.Navigate(typeof(SettingPage), list);
         }
+
+        private void scroll_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+
+            if (scroll.VerticalOffset >= 130)
+            {
+                _tt.Y = -130;
+            }
+            else
+            {
+                _tt.Y = -scroll.VerticalOffset;
+            }
+        }
+
+       
     }
+
 }

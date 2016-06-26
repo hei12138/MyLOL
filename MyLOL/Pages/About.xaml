@@ -18,15 +18,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid>
-                            <SymbolIcon HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Symbol="Back"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <control:ImageButton Height="25" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
             <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="关于"/>
         </Grid>
         <RelativePanel Grid.Row="2" Padding="12">
@@ -42,6 +34,9 @@
                 <Paragraph FontSize="12">1.0.63版本添加了胜率进度条，这个其实挺难完成的</Paragraph>
                 <Paragraph FontSize="12">1.0.64版本添加了主页的状态显示器</Paragraph>
                 <Paragraph FontSize="12">1.0.65版本添加了能力显示面板</Paragraph>
+                <Paragraph FontSize="12">6.20为ButtonForLoL添加交互</Paragraph>
+                <Paragraph FontSize="12">添加顶部置顶栏</Paragraph>
+                <Paragraph FontSize="12">添加硬件后退</Paragraph>
             </RichTextBlock>
 
             <StackPanel RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True">

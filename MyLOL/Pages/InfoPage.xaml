@@ -442,7 +442,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <converter:indexToColorConverter x:Key="indexToColorConverter"></converter:indexToColorConverter>
         <Style x:Key="ListBoxStyle1" TargetType="ListBox">
             <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
             <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"/>
@@ -864,7 +863,7 @@
                 </ListView>
             </PivotItem>
         </Pivot>
-        <ProgressRing x:Name="progressRing" IsActive="{Binding IsActive}" Height="50" Width="50" Foreground="{ThemeResource SystemColorControlAccentColor}"></ProgressRing>
+        <ProgressRing x:Name="progressRing" IsActive="{x:Bind IsActive,Mode=OneWay}" Height="50" Width="50" Foreground="{ThemeResource SystemColorControlAccentColor}"></ProgressRing>
     </Grid>
 
 </Page>

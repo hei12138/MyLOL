@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="MyLOL.Pages.SeverSelecterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyLOL.Pages"
+    xmlns:control="using:MyLOL.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FFEFEFF4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF242937">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <control:ImageButton Height="25" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
+            <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="绑定大区"/>
+        </Grid>
+    </Grid>
+</Page>

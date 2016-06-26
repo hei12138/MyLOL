@@ -38,7 +38,7 @@ namespace MyLOL.Controls
             var s = new Storyboard();
             var doubleanimation = new DoubleAnimation()
             {
-                Duration = new Duration(TimeSpan.FromMilliseconds(120)),
+                Duration = new Duration(TimeSpan.FromMilliseconds(160)),
                 //此处由于OnNavigateTo获取不到ActualWidth，故设置为400
                 //test
                 From = 400,

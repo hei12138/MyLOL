@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,22 +23,22 @@ namespace MyLOL.Pages
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class NewsPage : PageBase
+    public sealed partial class NewsPage:PageBase
     {
-        HttpClient client = new HttpClient();
+       
         public NewsPage()
         {
             this.InitializeComponent();
+            
         }
+        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             var apiUrl = e.Parameter as string;
             mywebview.Navigate(new Uri(apiUrl));
-            //var reponse = await client.GetStringAsync(new Uri(apiUrl));
-            //mywebview.NavigateToString(reponse);
         }
-        //have a look
+       
         //TODO
         //在此添加路由事件
 
@@ -46,5 +47,7 @@ namespace MyLOL.Pages
         {
             this.Frame.Content = null;
         }
+
+       
     }
 }

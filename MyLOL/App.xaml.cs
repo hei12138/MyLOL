@@ -18,6 +18,7 @@ using MyLOL.Pages;
 using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI;
+using MyLOL.Controls;
 
 namespace MyLOL
 {
@@ -29,6 +30,8 @@ namespace MyLOL
 
         const string SETTING_IS_DISPLAY_STATUS = "is display statusbar";
         ApplicationDataContainer rootContainer = ApplicationData.Current.LocalSettings;
+        CustomToast toast = new CustomToast() { Message = "再按一次退出软件" };
+
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
         /// 已执行，逻辑上等同于 main() 或 WinMain()。
@@ -95,8 +98,13 @@ namespace MyLOL
             }
             //设置最小宽度
             //ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size { Width = 400, Height = 700 });
-            
 
+            //注册后退键
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
+            {
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += OnBackPressed;
+            }
+            
 
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -137,6 +145,35 @@ namespace MyLOL
                 Window.Current.Activate();
             }
         }
+
+        void OnBackPressed( object sender,Windows.Phone.UI.Input.BackPressedEventArgs e)
+        {
+            if (MainPage.framelist[1].Content != null)
+            {
+                MainPage.framelist[1].Content = null;
+            }
+            else
+            {
+                if (MainPage.framelist[0].Content != null)
+                {
+                    MainPage.framelist[0].Content = null;
+                }
+                else
+                {
+                    if (toast.IsShow == true)
+                    {
+                        Application.Current.Exit();
+                    }
+                    toast.Show();
+                    //内容均为空
+                    //双击退出程序
+                }
+            }
+            e.Handled = true;
+
+        }
+
+
 
         /// <summary>
         /// 导航到特定页失败时调用

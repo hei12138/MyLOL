@@ -265,15 +265,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Grid>
-                            <SymbolIcon HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Symbol="Back"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <control:ImageButton Height="25" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
             <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="召唤师查询"/>
         </Grid>
         <!--此处输入搜索框-->

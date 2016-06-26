@@ -8,33 +8,98 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <!--<Style TargetType="Button">
+        <Style x:Key="ListViewStyle1" TargetType="ListView">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="TabNavigation" Value="Once"/>
+            <Setter Property="IsSwipeEnabled" Value="True"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Enabled"/>
+            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="True"/>
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled"/>
+            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="False"/>
+            <Setter Property="ScrollViewer.ZoomMode" Value="Disabled"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False"/>
+            <Setter Property="ScrollViewer.BringIntoViewOnFocusChange" Value="True"/>
+            <Setter Property="ItemContainerTransitions">
+                <Setter.Value>
+                    <TransitionCollection>
+                        <AddDeleteThemeTransition/>
+                        <ContentThemeTransition/>
+                        <ReorderThemeTransition/>
+                        <EntranceThemeTransition IsStaggeringEnabled="False"/>
+                    </TransitionCollection>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <ItemsStackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
-                        <Image Source="{TemplateBinding uri}"/>
+                    <ControlTemplate TargetType="ListView">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="ScrollViewer" AutomationProperties.AccessibilityView="Raw" BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsHorizontalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled}" IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" TabNavigation="{TemplateBinding TabNavigation}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+                                <ItemsPresenter FooterTransitions="{TemplateBinding FooterTransitions}" FooterTemplate="{TemplateBinding FooterTemplate}" Footer="{TemplateBinding Footer}" HeaderTemplate="{TemplateBinding HeaderTemplate}" Header="{TemplateBinding Header}" HeaderTransitions="{TemplateBinding HeaderTransitions}" Padding="{TemplateBinding Padding}"/>
+                            </ScrollViewer>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>-->
+        </Style>
     </Page.Resources>
-
     <Grid Background="#FFEFEFF4">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF242937">
             <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.ColumnSpan="2" Text="发现" Foreground="#FF967E5D" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25" Source="ms-appx:///Resources/barcode_icon.png" />
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.ColumnSpan="2" Text="发现" Foreground="#FF967E5D" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <control:ImageButton Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" ImageSourceNormal="ms-appx:///Resources/barcode_icon.png" ImageSourcePressed="ms-appx:///Resources/barcode_icon_press.png" />
         </Grid>
-        <ScrollViewer Grid.Row="1" Background="#FF242937"></ScrollViewer>
+        <ScrollViewer Grid.Row="1" Background="#FF242937">
+            <ListView Style="{StaticResource ListViewStyle1}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Button>
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Button>
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Grid>
+                                                    <RelativePanel>
+                                                        <Ellipse x:Name="eli" Width="80" Height="80">
+                                                            <Ellipse.Fill>
+                                                                <ImageBrush ImageSource="ms-appx:///Resources/DesoverPage/battle_video_large.png"/>
+                                                            </Ellipse.Fill>
+                                                        </Ellipse>
+                                                        <!--推荐 ff5255-->
+                                                        <Border RelativePanel.AlignBottomWith="eli" RelativePanel.AlignRightWith="eli" Background="#FF4487c2" CornerRadius="2">
+                                                            <TextBlock Text="已关注"/>
+                                                        </Border>
+                                                        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="eli" Text="LGD" HorizontalAlignment="Center" />
+                                                    </RelativePanel>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
         <Border Background="White" Grid.Row="2">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -78,7 +143,7 @@
             <Button HorizontalAlignment="Stretch">
                 <Button.Template>
                     <ControlTemplate>
-                        <Border Background="White" BorderBrush="Gray" BorderThickness="0,0.5,0,0.5" Padding="12">
+                        <Border Background="White" BorderBrush="Gray" BorderThickness="0,0.5,0,0.5" Padding="10">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
@@ -91,12 +156,11 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <control:ButtonForLOL MainText="游戏资料" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="12"/>
-            <control:ButtonForLOL MainText="社区" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="12"/>
-            <control:ButtonForLOL MainText="符文属性" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="12"/>
-            <control:ButtonForLOL MainText="壁纸" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="12"/>
-            <control:ButtonForLOL x:Name="btn_search" MainText="召唤师查询" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="12" Click="btn_search_Click"/>
+            <control:ButtonForLOL MainText="游戏资料" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+            <control:ButtonForLOL MainText="社区" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+            <control:ButtonForLOL MainText="符文属性" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+            <control:ButtonForLOL MainText="壁纸" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+            <control:ButtonForLOL x:Name="btn_search" MainText="召唤师查询" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10" Click="btn_search_Click"/>
         </StackPanel>
-        <Frame Grid.RowSpan="3" x:Name="searchFrame"/>
     </Grid>
 </Page>

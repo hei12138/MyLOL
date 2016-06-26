@@ -20,16 +20,16 @@ namespace MyLOL.Pages
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class BlankPage2 : Page
+    public sealed partial class SeverSelecterPage : Page
     {
-        public BlankPage2()
+        public SeverSelecterPage()
         {
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-           
+            this.Frame.Content = null;
         }
     }
 }
