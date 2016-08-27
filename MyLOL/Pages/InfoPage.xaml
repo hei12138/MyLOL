@@ -191,7 +191,7 @@
                                                     <RectangleGeometry x:Name="HeaderClipperGeometry"/>
                                                 </ContentControl.Clip>
                                                 <!--此处用于自定义header的颜色-->
-                                                <Grid Background="#FF242937">
+                                                <Grid Background="{ThemeResource TileBackground}">
                                                     <PivotHeaderPanel x:Name="StaticHeader" Visibility="Collapsed"/>
                                                     <PivotHeaderPanel x:Name="Header">
                                                         <PivotHeaderPanel.RenderTransform>
@@ -252,7 +252,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="whiteColor" Color="#FF967E5D"/>
         <SolidColorBrush x:Key="UnselectColor" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="listBoxSelectedColor" Color="Green"/>
         <!-- Default style for Windows.UI.Xaml.Controls.Primitives.PivotHeaderItem -->
@@ -321,7 +320,7 @@
                                         <Storyboard>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                                        Storyboard.TargetProperty="Foreground" >
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource whiteColor}" />
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TileForeground}" />
                                             </ObjectAnimationUsingKeyFrames>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid"
                                                                        Storyboard.TargetProperty="Background" >
@@ -599,7 +598,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="#FFEFEFF4">
+    <Grid Background="{ThemeResource PageBackground}">
         <Pivot Style="{StaticResource PivotStyle1}" SelectionChanged="Pivot_SelectionChanged">
             <PivotItem Header="最新">
                 <ListView ItemsSource="{Binding NewsInfo.list}" IsEnabled="True">

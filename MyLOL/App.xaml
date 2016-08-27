@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyLOL"
     RequestedTheme="Light">
-    
+    <Application.Resources>
+        <ResourceDictionary Source="Resource/Resources.xaml"/>
+    </Application.Resources>
 
 </Application>

@@ -11,7 +11,7 @@ namespace MyLOL.Models
     {
         public MatchInfo()
         {
-            list = new ObservableCollection<MatchList>() { new MatchList { gameState = GameState.Win,kill="10",death="1",assist="2" }, new MatchList { gameState = GameState.Win, kill = "10", death = "1", assist = "2" }, new MatchList { gameState = GameState.Win, kill = "10", death = "1", assist = "2" }, new MatchList { gameState = GameState.Win, kill = "10", death = "1", assist = "2" }, new MatchList { gameState = GameState.Win, kill = "10", death = "1", assist = "2" } };
+            list = new ObservableCollection<MatchList> { new MatchList { gameState = GameState.Win,kill="11",death="0",assist="12" } };
         }
         public ObservableCollection<MatchList> list { get; set; }
     }

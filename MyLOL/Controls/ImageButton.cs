@@ -18,13 +18,21 @@ namespace MyLOL.Controls
         public ImageButton()
         {
             this.DefaultStyleKey = typeof(ImageButton);
-            Click += ImageButton_Click;
+            //Click += ImageButton_Click;
         }
 
         private void ImageButton_Click(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, "Clicked", false);
         }
+
+        public Stretch ImageStretch
+        {
+            get { return (Stretch)GetValue(ImageStretchProperty); }
+            set { SetValue(ImageStretchProperty, value); }
+        }
+
+        public static readonly DependencyProperty ImageStretchProperty = DependencyProperty.Register("ImageStretch", typeof(Stretch), typeof(ImageButton), new PropertyMetadata(Stretch.Uniform));
 
         public ImageSource ImageSourceNormal
         {

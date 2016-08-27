@@ -95,7 +95,8 @@ namespace MyLOL
                     btn_info.IsClicked = false;
                     btn_me.IsClicked = false;
                     btn_friend.IsClicked = true;
-                    mainFrame.Navigate(typeof(FriendPage), framelist);
+                    mainFrame.Content = FriendPage.GetSingle();
+                    //mainFrame.Navigate(FriendPage.GetSingle().GetType(), framelist);
                     break;
             }
         }

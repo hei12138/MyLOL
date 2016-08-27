@@ -51,116 +51,119 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="#FFEFEFF4">
+    <Grid Background="{ThemeResource PageBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
-            <RowDefinition Height="120"/>
-            <RowDefinition Height="90"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF242937">
+        <Grid Grid.Row="0" Background="{ThemeResource TileBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.ColumnSpan="2" Text="发现" Foreground="#FF967E5D" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.ColumnSpan="2" Text="发现" Foreground="{ThemeResource TileForeground}" FontSize="{ThemeResource TileFontsize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <control:ImageButton Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" ImageSourceNormal="ms-appx:///Resources/barcode_icon.png" ImageSourcePressed="ms-appx:///Resources/barcode_icon_press.png" />
         </Grid>
-        <ScrollViewer Grid.Row="1" Background="#FF242937">
-            <ListView Style="{StaticResource ListViewStyle1}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Button>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <ScrollViewer Height="120" VerticalScrollMode="Disabled" HorizontalScrollMode="Enabled" Grid.Row="1" Background="#FF242937">
+                    <ListView Style="{StaticResource ListViewStyle1}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button>
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Button>
+                                                <Button.Template>
+                                                    <ControlTemplate>
+                                                        <Grid>
+                                                            <RelativePanel>
+                                                                <Ellipse x:Name="eli" Width="80" Height="80">
+                                                                    <Ellipse.Fill>
+                                                                        <ImageBrush ImageSource="ms-appx:///Resources/DesoverPage/battle_video_large.png"/>
+                                                                    </Ellipse.Fill>
+                                                                </Ellipse>
+                                                                <!--推荐 ff5255-->
+                                                                <Border RelativePanel.AlignBottomWith="eli" RelativePanel.AlignRightWith="eli" Background="#FF4487c2" CornerRadius="2">
+                                                                    <TextBlock Text="已关注"/>
+                                                                </Border>
+                                                                <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="eli" Text="LGD" HorizontalAlignment="Center" />
+                                                            </RelativePanel>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+                <Border Background="White" Height="90">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" HorizontalAlignment="Center">
                             <Button.Template>
                                 <ControlTemplate>
-                                    <Button>
-                                        <Button.Template>
-                                            <ControlTemplate>
-                                                <Grid>
-                                                    <RelativePanel>
-                                                        <Ellipse x:Name="eli" Width="80" Height="80">
-                                                            <Ellipse.Fill>
-                                                                <ImageBrush ImageSource="ms-appx:///Resources/DesoverPage/battle_video_large.png"/>
-                                                            </Ellipse.Fill>
-                                                        </Ellipse>
-                                                        <!--推荐 ff5255-->
-                                                        <Border RelativePanel.AlignBottomWith="eli" RelativePanel.AlignRightWith="eli" Background="#FF4487c2" CornerRadius="2">
-                                                            <TextBlock Text="已关注"/>
-                                                        </Border>
-                                                        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="eli" Text="LGD" HorizontalAlignment="Center" />
-                                                    </RelativePanel>
-                                                </Grid>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
+                                    <StackPanel>
+                                        <Image Width="50" Source="ms-appx:///Resources/DesoverPage/personal_msgs_entry.png"/>
+                                        <TextBlock Text="英雄资料" FontSize="18" Margin="0,6,0,0"/>
+                                    </StackPanel>
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        <Button Grid.Column="1" HorizontalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <Image Width="50" Source="ms-appx:///Resources/DesoverPage/users_recently_play_with.png"/>
+                                        <TextBlock Text="对战助手" FontSize="18" Margin="0,6,0,0"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Grid.Column="2" HorizontalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <Image Width="50" Source="ms-appx:///Resources/DesoverPage/users_nearby.png"/>
+                                        <TextBlock Text="附近玩家" FontSize="18" Margin="0,6,0,0"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+                <StackPanel>
+                    <Button HorizontalAlignment="Stretch">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border Background="White" BorderBrush="Gray" BorderThickness="0,0.5,0,0.5" Padding="10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Width="30" Source="ms-appx:///Resources/DesoverPage/net_cafe.png"/>
+                                        <TextBlock Grid.Column="1" Text="附近特权网吧" FontSize="20" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <control:ButtonForLOL MainText="游戏资料" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+                    <control:ButtonForLOL MainText="社区" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+                    <control:ButtonForLOL MainText="符文属性" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+                    <control:ButtonForLOL MainText="壁纸" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
+                    <control:ButtonForLOL x:Name="btn_search" MainText="召唤师查询" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10" Click="btn_search_Click"/>
+                </StackPanel>
+            </StackPanel>
         </ScrollViewer>
-        <Border Background="White" Grid.Row="2">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" HorizontalAlignment="Center">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <StackPanel>
-                                <Image Width="50" Source="ms-appx:///Resources/DesoverPage/personal_msgs_entry.png"/>
-                                <TextBlock Text="英雄资料" FontSize="18" Margin="0,6,0,0"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="1" HorizontalAlignment="Center">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <StackPanel>
-                                <Image Width="50" Source="ms-appx:///Resources/DesoverPage/users_recently_play_with.png"/>
-                                <TextBlock Text="对战助手" FontSize="18" Margin="0,6,0,0"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="2" HorizontalAlignment="Center">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <StackPanel>
-                                <Image Width="50" Source="ms-appx:///Resources/DesoverPage/users_nearby.png"/>
-                                <TextBlock Text="附近玩家" FontSize="18" Margin="0,6,0,0"/>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </Grid>
-        </Border>
-        <StackPanel Grid.Row="3">
-            <Button HorizontalAlignment="Stretch">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border Background="White" BorderBrush="Gray" BorderThickness="0,0.5,0,0.5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="6*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Width="30" Source="ms-appx:///Resources/DesoverPage/net_cafe.png"/>
-                                <TextBlock Grid.Column="1" Text="附近特权网吧" FontSize="20" VerticalAlignment="Center"/>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <control:ButtonForLOL MainText="游戏资料" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
-            <control:ButtonForLOL MainText="社区" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
-            <control:ButtonForLOL MainText="符文属性" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
-            <control:ButtonForLOL MainText="壁纸" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10"/>
-            <control:ButtonForLOL x:Name="btn_search" MainText="召唤师查询" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Background="White" Padding="10" Click="btn_search_Click"/>
-        </StackPanel>
+        
     </Grid>
 </Page>

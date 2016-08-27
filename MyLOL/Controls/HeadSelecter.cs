@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -13,15 +14,21 @@ using Windows.UI.Xaml.Media;
 
 namespace MyLOL.Controls
 {
-    public sealed class MyPivot : Pivot
+    public sealed class HeadSelecter : Control
     {
-        public MyPivot()
+        private Point currentPoint; //最新的，当前的点
+        private Point oldPoint;//上一个点
+        private bool isPoint = false;
+
+
+        public HeadSelecter()
         {
-            this.DefaultStyleKey = typeof(Pivot);
+            this.DefaultStyleKey = typeof(HeadSelecter);
         }
-        protected override void OnPointerWheelChanged(PointerRoutedEventArgs e)
+        protected override void OnApplyTemplate()
         {
-            e.Handled = true;
+            base.OnApplyTemplate();
+
         }
     }
 }

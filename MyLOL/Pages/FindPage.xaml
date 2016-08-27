@@ -254,19 +254,19 @@
         </Style>
     </control:PageBase.Resources>
 
-    <Grid Background="#FFEFEFF4">
+    <Grid Background="{ThemeResource PageBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF242937">
+        <Grid Grid.Row="0" Background="{ThemeResource TileBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <control:ImageButton Height="25" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
-            <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="召唤师查询"/>
+            <control:ImageButton Height="25" Width="40" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
+            <TextBlock Grid.ColumnSpan="2" FontSize="{ThemeResource TileFontsize}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource TileForeground}" Text="召唤师查询"/>
         </Grid>
         <!--此处输入搜索框-->
         <AutoSuggestBox Grid.Row="1" BorderThickness="0"

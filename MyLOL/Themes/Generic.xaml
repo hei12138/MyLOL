@@ -4,22 +4,6 @@
     xmlns:local="using:MyLOL"
     xmlns:control="using:MyLOL.Controls">
     
-
-    
-
-    <!--<Style TargetType="local2:ButtonForLOL" xmlns:local2="using:MyLOL.Controls">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local2:ButtonForLOL">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
     <Style TargetType="control:ButtonForLOL">
         <Setter Property="Template">
             <Setter.Value>
@@ -82,7 +66,7 @@
         </Setter>
     </Style>
 
-    
+
 
     <Style TargetType="control:TapButton" >
         <Setter Property="Template">
@@ -107,9 +91,9 @@
                                                          Storyboard.TargetProperty="Opacity">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border" 
-                                                                       Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BorderBackground}"/>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                         Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BorderBackground}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="text" 
                                                                        Storyboard.TargetProperty="Foreground">
@@ -127,10 +111,6 @@
                                                          Storyboard.TargetProperty="Opacity">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border" 
-                                                                       Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BorderBackground}"/>
-                                        </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="text" 
                                                                        Storyboard.TargetProperty="Foreground">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextBlockForeground}"/>
@@ -146,42 +126,31 @@
                                 <Image x:Name="image" Width="35" Source="{TemplateBinding ImageSourceNormal}" Opacity="{TemplateBinding ForeImageOpacity}"/>
                                 <Image x:Name="imageback" Width="35" Source="{TemplateBinding ImageSourcePressed}" Opacity="{TemplateBinding BackImageOpacity}"/>
                             </Grid>
-                            <TextBlock x:Name="text" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" Text="{TemplateBinding control:TapButton.Text}" FontSize="14" Margin="2"/>
+                            <TextBlock x:Name="text" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" Text="{TemplateBinding control:TapButton.Text}" FontSize="14"/>
                         </StackPanel>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <!--<Style TargetType="control:TapButton">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="control:TapButton">
-                    <Border>
-                        <TextBlock Text="{TemplateBinding control:TapButton.Text}" FontSize="12"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-
+    <!--ff4083d1   ff3fb6db-->
+    
     <Style TargetType="control:ColorDisplayer">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="control:ColorDisplayer">
                     <Grid x:Name="canvas">
-                        <Path>
-                            <Path.Fill>
+                        <Path Fill="{TemplateBinding ColorBrush}">
+                            <!--<Path.Fill>
                                 <LinearGradientBrush EndPoint="1,1" StartPoint="0.5,0.5">
-                                    <GradientStop Color="#ff4083d1" Offset="0"/>
-                                    <GradientStop Color="#ff3fb6db" Offset="1"/>
+                                    <GradientStop Color="{StaticResource ColorStart}" Offset="0"/>
+                                    <GradientStop Color="{TemplateBinding ColorEnd}" Offset="1"/>
                                 </LinearGradientBrush>
-                            </Path.Fill>
+                            </Path.Fill>-->
                             <Path.Data>
                                 <PathGeometry>
                                     <PathFigure StartPoint="0,0">
                                         <LineSegment Point="0,40"/>
-                                        <!--templatebinding并不起作用-->
                                         <LineSegment x:Name="leftBottom"/>
                                         <LineSegment x:Name="leftTop" />
                                         <LineSegment Point="0,0"/>
@@ -189,7 +158,7 @@
                                 </PathGeometry>
                             </Path.Data>
                         </Path>
-                        <Path Fill="#FFbed1eb">
+                        <Path Fill="{TemplateBinding ColorBrushBack}">
                             <Path.Data>
                                 <PathGeometry>
                                     <PathFigure x:Name="rightBottom" >
@@ -212,13 +181,13 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="control:PowerDisplayer">
-                    <Grid Background="#f4f4f5" Height="300" Width="300">
-                        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+                    <Grid Background="Transparent" Height="300" Width="300">
+                        <Canvas x:Name="rootcanvas" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent">
                             <Polygon Points="0,-100 78,-62 97,22 43,90 -43,90 -97,22 -78,-62" Fill="#dbe0f0" Stroke="#FFC1CDF0"/>
                             <Polygon Points="0,-75 58.5,-46.5 73,16.5 32,67.5 -32,67.5 -73,16.5 -58.5,-46.5" Fill="#a5b3da"/>
                             <Polygon Points="0,-50 39,-31 48.5,11 21.5,45 -21.5,45 -48.5,11 -39,-31" Fill="#798bbe"/>
                             <Polygon Points="0,-25 19.5,-15.5 24,5.5 11,22.5 -11,22.5 -24,5.5 -19.5,-15.5" Fill="#3c5393"/>
-                            <Polygon Points="0,-100 78,-62 97,22 43,90 -43,90 -97,22 -78,-62" Stroke="#ee5f49"/>
+                            <!--<Polygon Points="0,-100 78,-62 97,22 43,90 -43,90 -97,22 -78,-62" Stroke="#ee5f49"/>-->
                             <Line  X1="0" Y1="0" X2="0" Y2="-100" Stroke="#FFC1CDF0"/>
                             <Line  X1="0" Y1="0" X2="78" Y2="-62" Stroke="#FFC1CDF0"/>
                             <Line  X1="0" Y1="0" X2="97" Y2="22" Stroke="#FFC1CDF0"/>
@@ -233,7 +202,6 @@
                             <TextBlock Canvas.Top="100" Canvas.Left="-60" Text="魔法" FontSize="14" Foreground="#4e8dc4"/>
                             <TextBlock Canvas.Top="15" Canvas.Left="-135" Text="防御" FontSize="14" Foreground="#4e8dc4"/>
                             <TextBlock Canvas.Top="-80" Canvas.Left="-125" Text="金钱" FontSize="14" Foreground="#4e8dc4"/>
-                            
                         </Canvas>
                     </Grid>
                 </ControlTemplate>
@@ -254,7 +222,16 @@
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="PointerOver">
-                                   
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="image"
+                                                         Storyboard.TargetProperty="Opacity">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="0" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="imageback"
+                                                         Storyboard.TargetProperty="Opacity">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
@@ -272,8 +249,18 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Image x:Name="image" Height="{TemplateBinding Height}" Source="{TemplateBinding ImageSourceNormal}"/>
-                        <Image x:Name="imageback" Height="{TemplateBinding Height}" Source="{TemplateBinding ImageSourcePressed}" Opacity="0"/>
+                        <Image x:Name="image" Height="{TemplateBinding Height}" Stretch="{TemplateBinding ImageStretch}" Source="{TemplateBinding ImageSourceNormal}"/>
+                        <Image x:Name="imageback" Height="{TemplateBinding Height}" Stretch="{TemplateBinding ImageStretch}" Source="{TemplateBinding ImageSourcePressed}" Opacity="0"/>
+                        <ContentPresenter x:Name="ContentPresenter"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Content="{TemplateBinding Content}"
+                                ContentTransitions="{TemplateBinding ContentTransitions}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                AutomationProperties.AccessibilityView="Raw"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -281,7 +268,35 @@
     </Style>
     
 
-   
+    <Style TargetType="control:HeadSelecter">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Name="ClipHeadGrid" Background="#D3D3D3" Visibility="Visible" Width="300" Height="350">
+                        <ProgressBar Name="upClipHeadProgressBar" VerticalAlignment="Top" Margin="0,5,0,0" IsIndeterminate="True" Visibility="Collapsed"></ProgressBar>
+                        <ScrollViewer Name="headScrollViewer" Width="280" Height="280" VerticalAlignment="Top" Margin="0,10" ZoomMode="Enabled" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled" HorizontalScrollMode="Enabled"  MinZoomFactor="0.3" MaxZoomFactor="3"  >
+                            <Image Name="headImage" PointerPressed="headImage_PointerPressed" PointerMoved="headImage_PointerMoved" PointerExited="headImage_PointerExited" PointerReleased="headImage_PointerReleased"/>
+                        </ScrollViewer>
+                        <Path Fill="Black" Opacity="0.5" Margin="0,10" HorizontalAlignment="Center" VerticalAlignment="Top"  Width="280" Height="280">
+                            <Path.Data>
+                                <GeometryGroup>
+                                    <RectangleGeometry Rect="0,0,280,280"></RectangleGeometry>
+                                    <EllipseGeometry Center="140,140" RadiusX="140" RadiusY="140"/>
+                                </GeometryGroup>
+                            </Path.Data>
+                        </Path>
+                        <Grid VerticalAlignment="Bottom">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Name="clipHeadOKButton" Background="White" Grid.Column="0" HorizontalAlignment="Stretch" Margin="10" Content="确定" Click="clipHeadOKButton_Click"/>
+                            <Button Name="clipHeadDisButton" Background="White" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10" Content="取消" Click="clipHeadDisButton_Click"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-   
 </ResourceDictionary>

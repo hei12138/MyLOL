@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -16,15 +18,18 @@ namespace MyLOL.Controls
 {
     public sealed class ColorDisplayer : Control
     {
-        const double winpro = 0.3;
         public ColorDisplayer()
         {
             this.DefaultStyleKey = typeof(ColorDisplayer);
             
         }
 
+
+        //TODO 实现长度可控
+
         protected override void OnApplyTemplate()
         {
+            
             base.OnApplyTemplate();
             var rightTop = GetTemplateChild("rightTop") as LineSegment;
             rightTop.Point = new Point(200 * WinPro, 0);
@@ -37,6 +42,22 @@ namespace MyLOL.Controls
            
         }
 
+        public Brush ColorBrush
+        {
+            get { return (Brush)GetValue(ColorBrushProperty); }
+            set { SetValue(ColorBrushProperty, value); }
+        }
+        public static readonly DependencyProperty ColorBrushProperty = DependencyProperty.Register("ColorBrush", typeof(Brush), typeof(ColorDisplayer), new PropertyMetadata(new SolidColorBrush(Colors.Green)));
+
+
+        public Brush ColorBrushBack
+        {
+            get { return (Brush)GetValue(ColorBrushBackProperty); }
+            set { SetValue(ColorBrushBackProperty, value); }
+        }
+        public static readonly DependencyProperty ColorBrushBackProperty = DependencyProperty.Register("ColorBrushBack", typeof(Brush), typeof(ColorDisplayer), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
+
+
         private double winPro;
         public double WinPro
         {
@@ -44,44 +65,11 @@ namespace MyLOL.Controls
             set { winPro = value; }
         }
 
-
-        ////好像是Get方法没有起作用
-        ////底部中间点
-        //public Point Interpointbottom
-        //{
-        //    get { return (Point)GetValue(InterpointbottomProperty); }
-        //    set { SetValue(InterpointbottomProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for ClassRoom.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty InterpointbottomProperty =
-        //    DependencyProperty.RegisterAttached("Interpointbottom", typeof(Point), typeof(ColorDisplayer), new PropertyMetadata(new Point(150, 40)));
-
-
-        ////顶部中间点
-        //public static Point GetInterpointtop(DependencyObject obj)
-        //{
-        //    return (Point)obj.GetValue(InterpointtopProperty);
-        //}
-
-
-        //public static void SetInterpointtop(DependencyObject obj, Point value)
-        //{
-        //    obj.SetValue(InterpointtopProperty, value);
-        //}
-
-        //// Using a DependencyProperty as the backing store for ClassRoom.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty InterpointtopProperty =
-        //    DependencyProperty.RegisterAttached("Interpointtop", typeof(Point), typeof(ColorDisplayer), new PropertyMetadata(new Point(140, 0)));
-
-
         //胜率信息
         public static string GetText(DependencyObject obj)
         {
             return (string)obj.GetValue(TextProperty);
         }
-
-
         public static void SetText(DependencyObject obj, string value)
         {
             obj.SetValue(TextProperty, value);
