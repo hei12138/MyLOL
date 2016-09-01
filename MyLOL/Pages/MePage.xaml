@@ -9,9 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-      
-        <SolidColorBrush x:Key="whiteColor" Color="#FF5E96DC"/>
-        <!-- Default style for Windows.UI.Xaml.Controls.Primitives.PivotHeaderItem -->
+
         <Style TargetType="ListViewItem">
             <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
             <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
@@ -79,246 +77,65 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <converters:RankToImageConverter x:Key="RankToImageConverter"/>
         <converters:LevelConverter x:Key="LevelConverter"/>
         <converters:GameStatusToString x:Key="GameStatusToString"/>
         <converters:GameStatusToFillConverter x:Key="GameStatusToFillConverter"/>
         <converters:GameToTimesConverter x:Key="GameToTimesConverter"/>
         <converters:WinProToStringConverter x:Key="WinProToStringConverter"/>
-        <SolidColorBrush x:Key="SelectedColor" Color="#FF5E96DC"/>
-        <!-- Default style for Windows.UI.Xaml.Controls.ListBox -->
-        <Style TargetType="ListBox">
-            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
-            <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" />
-            <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
-            <Setter Property="BorderThickness" Value="{ThemeResource ListBoxBorderThemeThickness}" />
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
-            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="True" />
-            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled" />
-            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="True" />
-            <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
-            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
-            <Setter Property="ScrollViewer.BringIntoViewOnFocusChange" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="TabNavigation" Value="Once" />
-            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
-            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
-            <Setter Property="ItemsPanel">
-                <Setter.Value>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ListBox">
-                        <Border
-                        x:Name="LayoutRoot"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                            <ScrollViewer x:Name="ScrollViewer"
-                                      Padding="{TemplateBinding Padding}"
-                                      TabNavigation="{TemplateBinding TabNavigation}"
-                                      HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
-                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                      VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
-                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                      IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
-                                      IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
-                                      ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}"
-                                      IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
-                                      BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}"
-                                      AutomationProperties.AccessibilityView="Raw">
-                                <ItemsPresenter />
-                            </ScrollViewer>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <!-- Default style for Windows.UI.Xaml.Controls.ListBoxItem -->
-        <Style TargetType="ListBoxItem">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="TabNavigation" Value="Local" />
-            <Setter Property="Padding" Value="40,0" />
-            <Setter Property="Height" Value="48"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left" />
-            <Setter Property="UseSystemFocusVisuals" Value="True" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ListBoxItem">
-                        <Grid
-                        x:Name="LayoutRoot"
-                        Background="{TemplateBinding Background}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid.Resources>
-                                <Style x:Key="BaseContentPresenterStyle" TargetType="ContentPresenter">
-                                    <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
-                                    <Setter Property="FontWeight" Value="SemiBold" />
-                                    <Setter Property="FontSize" Value="15" />
-                                    <Setter Property="TextWrapping" Value="Wrap" />
-                                    <Setter Property="LineStackingStrategy" Value="MaxHeight" />
-                                    <Setter Property="TextLineBounds" Value="Full" />
-                                    <Setter Property="OpticalMarginAlignment" Value="TrimSideBearings" />
-                                </Style>
-                                <Style x:Key="BodyContentPresenterStyle" TargetType="ContentPresenter" BasedOn="{StaticResource BaseContentPresenterStyle}">
-                                    <Setter Property="FontWeight" Value="Normal" />
-                                    <Setter Property="FontSize" Value="18" />
-                                </Style>
-                            </Grid.Resources>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal" />
-                                    <VisualState x:Name="Disabled">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseMediumLowBrush}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="PointerOver">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="FontSize">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="20" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SelectedColor}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="FontSize">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="20" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SelectedColor}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Selected">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="FontSize">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="20" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SelectedColor}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="SelectedUnfocused">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="FontSize">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="20" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SelectedColor}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="SelectedPointerOver">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="FontSize">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="20" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
-                                                                       Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SelectedColor}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="SelectedPressed">
-
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <Rectangle
-                            x:Name="PressedBackground"
-                            Fill="Transparent"
-                            Control.IsTemplateFocusTarget="True"/>
-                            <ContentPresenter
-                            x:Name="ContentPresenter"
-                            Foreground="#66000000"
-                                
-                            Content="{TemplateBinding Content}"
-                            ContentTransitions="{TemplateBinding ContentTransitions}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            Style="{StaticResource BodyContentPresenterStyle}"
-                            TextWrapping="NoWrap"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Margin="{TemplateBinding Padding}" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </Page.Resources>
-
-    <Grid Background="#FFEFEFF4">
+    <Grid Background="{ThemeResource PageBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="178"/>
-            <RowDefinition />
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--能力展示面板-->
-        <ScrollViewer Grid.Row="2" x:Name="scroll" ViewChanged="scroll_ViewChanged" Grid.RowSpan="2">
+        <ScrollViewer Grid.Row="2" x:Name="scroll"  VerticalScrollBarVisibility="Hidden" ViewChanged="scroll_ViewChanged" Grid.RowSpan="2">
             <Grid x:Name="root">
                 <Pivot x:Name="flip">
                     <Pivot.Title>
-                        <Grid Height="105"></Grid>
+                        <Grid Height="104"></Grid>
                     </Pivot.Title>
                     <PivotItem>
-                        <StackPanel Background="#f4f4f5">
-                            <Border Margin="18" Background="White" Height="130" BorderBrush="Gray" BorderThickness="0.5" CornerRadius="4">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <RelativePanel Grid.Column="0">
-                                        <Image Height="90" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="rankBig" Source="ms-appx:///Resources/MePage/rankImage/dan_diamond.png" />
-                                        <TextBlock x:Name="rankName" Text="璀璨钻石" Foreground="Gray" 
-                                           RelativePanel.Below="rankBig" FontSize="16"
-                                           Margin="-12,0,0,0"
-                                           VerticalAlignment="Center"
-                                           RelativePanel.AlignVerticalCenterWithPanel="True" 
-                                           RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                                        <TextBlock Text="Ⅰ" FontSize="16" RelativePanel.RightOf="rankName" RelativePanel.AlignVerticalCenterWith="rankName"/>
-                                    </RelativePanel>
-                                    <RelativePanel Grid.Column="1">
-                                        <Image Stretch="Uniform" Height="35" RelativePanel.AlignRightWithPanel="True"  Margin="0,12,-2,0" Source="ms-appx:///Resources/MePage/online_notice_enable.png" />
-                                        <TextBlock x:Name="totalgame" Text="总局数" Foreground="Black" FontSize="20" Margin="0,12,0,0"/>
-                                        <TextBlock Text="{x:Bind MeViewModel.TotalGame,Converter={StaticResource GameToTimesConverter}}" Foreground="#FF5E96DC" FontSize="20" 
+                        <StackPanel>
+                            <Button x:Name="btn_Winpro" Click="btn_Winpro_Click" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <ContentPresenter x:Name="ContentPresenter" />
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <Button.Content>
+                                    <Border Pivot.SlideInAnimationGroup="Default" Margin="18" Background="White" Height="130" BorderBrush="Gray" BorderThickness="0.5" CornerRadius="4">
+                                        <RelativePanel>
+                                            <Image Height="90" Width="90" Margin="10,0,10,0" x:Name="rankBig" Source="{x:Bind MeViewModel.UserInfo.RankBig,Mode=OneWay,Converter={StaticResource RankToImageConverter}}" />
+                                            <TextBlock x:Name="rankName" Text="{x:Bind MeViewModel.UserInfo.RankBig,Mode=OneWay}" Foreground="#FF747474" 
+                                           RelativePanel.Below="rankBig" 
+                                            RelativePanel.AlignLeftWith="rankBig" Margin="16,0,0,0"/>
+                                            <TextBlock Text="{x:Bind MeViewModel.UserInfo.RankSmall,Mode=OneWay}" Foreground="#FFA8A8A8" RelativePanel.RightOf="rankName" RelativePanel.AlignVerticalCenterWith="rankName"/>
+
+                                            <Image Stretch="Uniform" Height="35" RelativePanel.AlignRightWithPanel="True"  Margin="0,12,-2,0" Source="ms-appx:///Resources/MePage/online_notice_enable.png" />
+                                            <TextBlock x:Name="totalgame" Text="总局数" Foreground="Black" FontSize="20" Margin="0,12,0,0"
+                                                            RelativePanel.RightOf="rankBig"/>
+                                            <TextBlock Text="{x:Bind MeViewModel.UserInfo.TotalGame,Converter={StaticResource GameToTimesConverter}}" Foreground="#FF5E96DC" FontSize="20" 
                                            RelativePanel.RightOf="totalgame" RelativePanel.AlignBottomWith="totalgame" Margin="6,0,0,0"/>
-                                        <TextBlock x:Name="wingame" Text="胜利" FontSize="16" RelativePanel.Below="totalgame" Foreground="Black" Margin="0,6,0,0"/>
-                                        <TextBlock x:Name="wingametime" Text="{x:Bind MeViewModel.WinGame,Converter={StaticResource GameToTimesConverter}}" FontSize="16" Foreground="#FF5E96DC" RelativePanel.RightOf="wingame" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
-                                        <TextBlock Text="失败" x:Name="failgame" FontSize="16" Foreground="Black" RelativePanel.RightOf="wingametime" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
-                                        <TextBlock Text="{x:Bind MeViewModel.FailGame,Converter={StaticResource GameToTimesConverter}}" FontSize="16" Foreground="#FF5E96DC" RelativePanel.RightOf="failgame" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
-                                        <control:ColorDisplayer RelativePanel.AlignBottomWithPanel="True" WinPro="{x:Bind MeViewModel.WinPro}" Text="{x:Bind MeViewModel.WinPro,Converter={StaticResource WinProToStringConverter}}"  Margin="0,6"/>
-                                    </RelativePanel>
-                                </Grid>
-                            </Border>
-                            <RelativePanel Height="40">
+                                            <TextBlock x:Name="wingame" Text="胜利" FontSize="16"
+                                                           RelativePanel.AlignLeftWith="totalgame"
+                                                           RelativePanel.Below="totalgame" Foreground="Black" Margin="0,6,0,0"/>
+                                            <TextBlock x:Name="wingametime" Text="{x:Bind MeViewModel.UserInfo.WinGame,Converter={StaticResource GameToTimesConverter}}" FontSize="16" Foreground="#FF5E96DC" RelativePanel.RightOf="wingame" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
+                                            <TextBlock Text="失败" x:Name="failgame" FontSize="16" Foreground="Black" RelativePanel.RightOf="wingametime" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
+                                            <TextBlock Text="{x:Bind MeViewModel.UserInfo.FailGame,Converter={StaticResource GameToTimesConverter}}" FontSize="16" Foreground="#FF5E96DC" RelativePanel.RightOf="failgame" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
+                                            <control:ColorDisplayer RelativePanel.AlignBottomWithPanel="True" WinPro="{x:Bind MeViewModel.UserInfo.WinPro}" Text="{x:Bind MeViewModel.UserInfo.WinPro,Converter={StaticResource WinProToStringConverter}}" ColorBrush="{ThemeResource BrushForWinpro}" ColorBrushBack="{ThemeResource ColorBackBrush}" RelativePanel.AlignLeftWith="totalgame" Margin="0,6"/>
+                                        </RelativePanel>
+                                    </Border>
+                                </Button.Content>
+                            </Button>
+                            <RelativePanel Height="40" Pivot.SlideInAnimationGroup="GroupOne">
                                 <Image x:Name="hero_text_tag" Height="15" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="16,0,0,0" Source="ms-appx:///Resources/MePage/hero_text_tag.png" />
                                 <TextBlock Text="战绩" Foreground="Black" RelativePanel.RightOf="hero_text_tag" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0,0,0"/>
                                 <Image RelativePanel.AlignRightWithPanel="True" Margin="0,0,2,2" Source="ms-appx:///Resources/MePage/continuous_honor_10.png" />
                             </RelativePanel>
-                            <ListView ItemsSource="{Binding MatchInfo.list}">
+                            <ListView ItemsSource="{Binding MatchInfo.list}" Pivot.SlideInAnimationGroup="GroupOne">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Button Height="90" HorizontalAlignment="Stretch">
@@ -350,233 +167,199 @@
                         </StackPanel>
                     </PivotItem>
                     <PivotItem>
-                        <StackPanel Background="#f4f4f5">
+                        <StackPanel Background="White">
                             <RelativePanel>
-                                <control:PowerDisplayer RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                <control:PowerDisplayer RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Kill="0.3"/>
                                 <control:ImageButton Height="30" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="24" ImageSourceNormal="ms-appx:///Resources/MePage/ability_qa_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/ability_qa_press.png"/>
                             </RelativePanel>
                             <RelativePanel Height="40">
-                                <TextBlock x:Name="tb_position" RelativePanel.AlignVerticalCenterWithPanel="True" Text="擅长位置：" FontSize="18"/>
+                                <TextBlock x:Name="tb_position" RelativePanel.AlignVerticalCenterWithPanel="True" Text="擅长位置：" Margin="12,0,0,0" FontSize="18"/>
                                 <TextBlock x:Name="tb_no1" RelativePanel.RightOf="tb_position" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0" Text="未设置" FontSize="18" Foreground="#FF5E96DC"/>
                                 <control:ImageButton Height="15" RelativePanel.RightOf="tb_no1" RelativePanel.AlignVerticalCenterWithPanel="True" ImageSourceNormal="ms-appx:///Resources/MePage/edit_good_at.png" ImageSourcePressed="ms-appx:///Resources/MePage/edit_good_at_press.png"/>
                             </RelativePanel>
                             <RelativePanel Height="40">
-                                <TextBlock x:Name="tb_impression" RelativePanel.AlignVerticalCenterWithPanel="True" Text="玩家印象" FontSize="18"/>
+                                <TextBlock x:Name="tb_impression" RelativePanel.AlignVerticalCenterWithPanel="True" Text="玩家印象" Margin="12,0,0,0" FontSize="18"/>
                                 <TextBlock x:Name="tb_listofimpression" RelativePanel.RightOf="tb_impression" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0" FontSize="18" Foreground="#FF5E96DC"/>
                                 <control:ImageButton Height="15" RelativePanel.RightOf="tb_listofimpression" RelativePanel.AlignVerticalCenterWithPanel="True" ImageSourceNormal="ms-appx:///Resources/MePage/edit_good_at.png" ImageSourcePressed="ms-appx:///Resources/MePage/edit_good_at_press.png"/>
                             </RelativePanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="12" Height="15" Source="ms-appx:///Resources/MePage/hero_text_tag.png"/>
+                                <TextBlock Text="最近常用英雄" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <ListView Margin="12,0" Height="100">
+                                <ListView.Items>
+                                    <Button>
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <StackPanel>
+                                                    <Image Height="50" Source="ms-appx:///Resources/heroheadimage/268_Web_0.jpg" />
+                                                    <TextBlock Text="164场" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="65%胜" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </ListView.Items>
+                            </ListView>
+                            <Border BorderBrush="Gray" BorderThickness="0,0.5,0,0.5">
+                                <RelativePanel>
+                                    <Image Height="40" Width="40" Margin="12" RelativePanel.AlignLeftWithPanel="True" x:Name="winproimage" Source="ms-appx:///Resources/headimages/profileIcon1209.jpg"/>
+                                    <TextBlock RelativePanel.RightOf="winproimage" Text="我的胜率排名" FontSize="20" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                    <TextBlock Text="1 >" Margin="0,0,12,0" Foreground="Gray" FontSize="20" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                </RelativePanel>
+                            </Border>
                         </StackPanel>
                     </PivotItem>
                     <PivotItem>
-                        <StackPanel Background="#f4f4f5">
-                            
+                        <StackPanel Background="White">
+                            <Border BorderBrush="Gray" BorderThickness="0,0,0,0.5">
+                                <RelativePanel Height="48">
+                                    <TextBlock x:Name="tbl_balance" FontSize="18" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0,0,0" Text="余额"/>
+                                    <TextBlock x:Name="tbl_dianquan" RelativePanel.RightOf="tbl_balance" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0,0,0" FontSize="18" Foreground="#FF5E96DC" Text="点券"/>
+                                    <TextBlock x:Name="tbl_dianquanedit" RelativePanel.RightOf="tbl_dianquan" RelativePanel.AlignVerticalCenterWithPanel="True" Foreground="#FF5E96DC" FontSize="18"  Text="12300"/>
+                                    <TextBlock x:Name="tbl_coin" RelativePanel.RightOf="tbl_dianquanedit" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="18" Margin="12,0,0,0" Foreground="#FF5E96DC" Text="金币"/>
+                                    <TextBlock x:Name="tbl_coinedit" RelativePanel.RightOf="tbl_coin" RelativePanel.AlignVerticalCenterWithPanel="True" FontSize="18" Foreground="#FF5E96DC" Text="45038"/>
+                                    <TextBlock Text="资产记录 >" Foreground="Gray" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                </RelativePanel>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0,0,0.5">
+                                <StackPanel>
+                                    <RelativePanel>
+                                        <Image x:Name="herohave" Margin="12" Height="15" Source="ms-appx:///Resources/MePage/hero_text_tag.png" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                        <TextBlock Text="拥有的英雄(131/131)" RelativePanel.RightOf="herohave" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                        <TextBlock Text="查看全部 >" Foreground="Gray" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                    </RelativePanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Margin="12" Width="40" Height="40" Source="ms-appx:///Resources/heroheadimage/268_Web_0.jpg"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border BorderBrush="Gray" BorderThickness="0,0,0,0.5">
+                                <StackPanel>
+                                    <RelativePanel>
+                                        <Image x:Name="have" Margin="12" Height="15" Source="ms-appx:///Resources/MePage/hero_text_tag.png" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                        <TextBlock Text="拥有的皮肤(436/691)" RelativePanel.RightOf="have" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                        <TextBlock Text="查看全部 >" Foreground="Gray" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                    </RelativePanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Margin="12"  Height="120" Source="ms-appx:///Resources/Skins/Aatrox_1.jpg"/>
+                                        <Image Margin="12" Height="120" Source="ms-appx:///Resources/Skins/Ahri_6.jpg"/>
+                                        <Image Margin="12" Height="120" Source="ms-appx:///Resources/Skins/LeeSin_3.jpg"/>
+                                        <Image Margin="12" Height="120" Source="ms-appx:///Resources/Skins/Annie_1.jpg"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
                         </StackPanel>
                     </PivotItem>
                 </Pivot>
-                <!--<Button Background="Transparent" HorizontalAlignment="Stretch" Height="178"/>
-                <control:FlipView1 x:Name="flip" Background="Transparent" Grid.Row="1">
-                    <FlipView.Items>
-                        <StackPanel Background="#f4f4f5" Margin="12,0">
-                            <Border Margin="18" Background="White" Height="130" BorderBrush="Gray" BorderThickness="0.5" CornerRadius="4">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <RelativePanel Grid.Column="0">
-                                        <Image Height="90" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="rankBig" Source="ms-appx:///Resources/MePage/rankImage/dan_diamond.png" />
-                                        <TextBlock x:Name="rankName" Text="璀璨钻石" Foreground="Gray" 
-                                           RelativePanel.Below="rankBig" FontSize="16"
-                                           Margin="-12,0,0,0"
-                                           VerticalAlignment="Center"
-                                           RelativePanel.AlignVerticalCenterWithPanel="True" 
-                                           RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                                        <TextBlock Text="Ⅰ" FontSize="16" RelativePanel.RightOf="rankName" RelativePanel.AlignVerticalCenterWith="rankName"/>
-                                    </RelativePanel>
-                                    <RelativePanel Grid.Column="1">
-                                        <Image Stretch="Uniform" Height="35" RelativePanel.AlignRightWithPanel="True"  Margin="0,12,-2,0" Source="ms-appx:///Resources/MePage/online_notice_enable.png" />
-                                        <TextBlock x:Name="totalgame" Text="总局数" Foreground="Black" FontSize="20" Margin="0,12,0,0"/>
-                                        <TextBlock Text="{x:Bind MeViewModel.TotalGame,Converter={StaticResource GameToTimesConverter}}" Foreground="#FF5E96DC" FontSize="20" 
-                                           RelativePanel.RightOf="totalgame" RelativePanel.AlignBottomWith="totalgame" Margin="6,0,0,0"/>
-                                        <TextBlock x:Name="wingame" Text="胜利" FontSize="16" RelativePanel.Below="totalgame" Foreground="Black" Margin="0,6,0,0"/>
-                                        <TextBlock x:Name="wingametime" Text="{x:Bind MeViewModel.WinGame,Converter={StaticResource GameToTimesConverter}}" FontSize="16" Foreground="#FF5E96DC" RelativePanel.RightOf="wingame" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
-                                        <TextBlock Text="失败" x:Name="failgame" FontSize="16" Foreground="Black" RelativePanel.RightOf="wingametime" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
-                                        <TextBlock Text="{x:Bind MeViewModel.FailGame,Converter={StaticResource GameToTimesConverter}}" FontSize="16" Foreground="#FF5E96DC" RelativePanel.RightOf="failgame" RelativePanel.AlignBottomWith="wingame" Margin="6,0,0,0"/>
-                                        <control:ColorDisplayer RelativePanel.AlignBottomWithPanel="True" WinPro="{x:Bind MeViewModel.WinPro}" Text="{x:Bind MeViewModel.WinPro,Converter={StaticResource WinProToStringConverter}}"  Margin="0,6"/>
-                                    </RelativePanel>
-                                </Grid>
-                            </Border>
-                            <RelativePanel Height="40">
-                                <Image x:Name="hero_text_tag" Height="15" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="16,0,0,0" Source="ms-appx:///Resources/MePage/hero_text_tag.png" />
-                                <TextBlock Text="战绩" Foreground="Black" RelativePanel.RightOf="hero_text_tag" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0,0,0"/>
-                                <Image RelativePanel.AlignRightWithPanel="True" Margin="0,0,2,2" Source="ms-appx:///Resources/MePage/continuous_honor_10.png" />
-                            </RelativePanel>
-                            <ListView ItemsSource="{Binding MatchInfo.list}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button Height="90" HorizontalAlignment="Stretch">
-                                            <Button.Template>
-                                                <ControlTemplate>
-                                                    <Border BorderBrush="Gray" BorderThickness="0,0.5,0,0.5" >
-                                                        <RelativePanel>
-                                                            <Image x:Name="hero_image" Margin="12,0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="70" Source="ms-appx:///Resources/heroheadimage/126_Web_0.jpg"/>
-                                                            <TextBlock Text="排位赛" FontSize="20" RelativePanel.RightOf="hero_image" RelativePanel.AlignTopWith="hero_image"/>
-                                                            <Border x:Name="match_state" RelativePanel.RightOf="hero_image" RelativePanel.AlignBottomWith="hero_image" Background="#FF00a585" CornerRadius="2" Width="40" Height="20">
-                                                                <TextBlock Text="胜利" HorizontalAlignment="Center" Foreground="White"/>
-                                                            </Border>
-                                                            <Image x:Name="match_kill_icon" RelativePanel.RightOf="match_state" RelativePanel.AlignBottomWith="hero_image" Height="18" Source="ms-appx:///Resources/matchIcons/battle_kill_icon_win.png"/>
-                                                            <TextBlock x:Name="match_kill_time" Text="{Binding kill}" RelativePanel.AlignTopWith="match_kill_icon" VerticalAlignment="Center" RelativePanel.RightOf="match_kill_icon" RelativePanel.AlignBottomWith="hero_image" FontSize="20" Foreground="#FF00a585"/>
-                                                            <Image x:Name="match_death_icon" RelativePanel.RightOf="match_kill_time" RelativePanel.AlignBottomWith="hero_image" Height="18" Margin="12,0,0,0" Source="ms-appx:///Resources/matchIcons/battle_death_icon_win.png"/>
-                                                            <TextBlock x:Name="match_death_time" Text="{Binding death}" RelativePanel.AlignTopWith="match_death_icon" VerticalAlignment="Center" RelativePanel.RightOf="match_death_icon" RelativePanel.AlignBottomWith="hero_image" FontSize="20" Foreground="#FF00a585"/>
-                                                            <Image x:Name="match_assist_icon"  RelativePanel.RightOf="match_death_time" RelativePanel.AlignBottomWith="hero_image" Height="18" Margin="12,0,0,0" Source="ms-appx:///Resources/matchIcons/battle_assist_icon_win.png"/>
-                                                            <TextBlock x:Name="match_assist_time" Text="{Binding assist}" RelativePanel.RightOf="match_assist_icon" RelativePanel.AlignBottomWith="match_assist_icon" RelativePanel.AlignTopWith="match_assist_icon" VerticalAlignment="Center" FontSize="20" Foreground="#FF00a585"/>
-                                                            <Image Height="18" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,0,12,0" RelativePanel.AlignRightWithPanel="True" Source="ms-appx:///Resources/matchIcons/arrow_right_gray_dark.png"/>
-                                                            <TextBlock Text="2小时前" Foreground="Gray" Margin="0,0,16,0" FontSize="15" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWith="hero_image"/>
-                                                        </RelativePanel>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Button.Template>
-                                        </Button>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackPanel>
-                        <StackPanel Background="#f4f4f5" Margin="12,0">
-                                <RelativePanel>
-                                    <control:PowerDisplayer RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                                    <control:ImageButton Height="30" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="24" ImageSourceNormal="ms-appx:///Resources/MePage/ability_qa_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/ability_qa_press.png"/>
-                                </RelativePanel>
-                                <RelativePanel Height="40">
-                                    <TextBlock x:Name="tb_position" RelativePanel.AlignVerticalCenterWithPanel="True" Text="擅长位置：" FontSize="18"/>
-                                    <TextBlock x:Name="tb_no1" RelativePanel.RightOf="tb_position" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0" Text="未设置" FontSize="18" Foreground="#FF5E96DC"/>
-                                    <control:ImageButton Height="15" RelativePanel.RightOf="tb_no1" RelativePanel.AlignVerticalCenterWithPanel="True" ImageSourceNormal="ms-appx:///Resources/MePage/edit_good_at.png" ImageSourcePressed="ms-appx:///Resources/MePage/edit_good_at_press.png"/>
-                                </RelativePanel>
-                                <RelativePanel Height="40">
-                                    <TextBlock x:Name="tb_impression" RelativePanel.AlignVerticalCenterWithPanel="True" Text="玩家印象" FontSize="18"/>
-                                    <TextBlock x:Name="tb_listofimpression" RelativePanel.RightOf="tb_impression" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0" FontSize="18" Foreground="#FF5E96DC"/>
-                                    <control:ImageButton Height="15" RelativePanel.RightOf="tb_listofimpression" RelativePanel.AlignVerticalCenterWithPanel="True" ImageSourceNormal="ms-appx:///Resources/MePage/edit_good_at.png" ImageSourcePressed="ms-appx:///Resources/MePage/edit_good_at_press.png"/>
-                                </RelativePanel>
-                            </StackPanel>
-                        <StackPanel/>
-                    </FlipView.Items>
-                </control:FlipView1>-->
             </Grid>
         </ScrollViewer>
-
-        <!--区域栏-->
-        <Grid x:Name="header" Grid.Row="2" Background="#FFFAFAFA">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="48"/>
-            </Grid.RowDefinitions>
-            <Border Grid.Row="0" BorderThickness="0,0,0,0.5" BorderBrush="Gray">
-                <RelativePanel>
-                    <TextBlock Margin="8,0" x:Name="te" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Text="艾欧尼亚" FontSize="18"/>
-                    <Image RelativePanel.LeftOf="te" RelativePanel.AlignBottomWith="te" RelativePanel.AlignTopWith="te" Width="20" Source="ms-appx:///Resources/region_icon_role_center.png"/>
-                    <control:ImageButton RelativePanel.RightOf="te" RelativePanel.AlignBottomWith="te" RelativePanel.AlignTopWith="te" Width="15" ImageSourceNormal="ms-appx:///Resources/MePage/arrow_fold_down_role_center_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/arrow_fold_down_role_center_pressed.png"/>
-                    <control:ImageButton RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0" Width="30" ImageSourceNormal="ms-appx:///Resources/MePage/share_role_center_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/share_role_center_pressed.png" />
-                </RelativePanel>
-            </Border>
-            <Border Grid.Row="1" BorderThickness="0,0,0,0.5" BorderBrush="Gray">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <RelativePanel Grid.Column="0">
-                        <Image x:Name="headerImage" RelativePanel.AlignLeftWithPanel="True" Source="ms-appx:///Resources/headimages/profileIcon1209.jpg" Margin="12"></Image>
-                        <TextBlock Text="{x:Bind MeViewModel.GameID,Mode=OneWay}" x:Name="gameId" RelativePanel.RightOf="headerImage" Margin="4,12,0,0" />
-                        <TextBlock Text="{x:Bind MeViewModel.Level,Converter={StaticResource LevelConverter}}" Foreground="#FF5E96DC" RelativePanel.RightOf="headerImage" x:Name="level"  RelativePanel.AlignBottomWith="headerImage" Margin="2,12,0,12"/>
-                        <Ellipse Width="8" Height="8" Fill="{x:Bind MeViewModel.GameStatus,Converter={StaticResource GameStatusToFillConverter}}" x:Name="ellipse" RelativePanel.RightOf="level" RelativePanel.AlignVerticalCenterWith="level" Margin="8"/>
-                        <TextBlock Text="{x:Bind MeViewModel.GameStatus,Converter={StaticResource GameStatusToString}}" Foreground="#FF5E96DC" RelativePanel.RightOf="ellipse" RelativePanel.AlignVerticalCenterWith="ellipse"/>
-                    </RelativePanel>
-                    <Button HorizontalAlignment="Right" Grid.Column="1" Height="45" Width="140">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Grid>
-                                    <Image Stretch="Fill" Source="ms-appx:///Resources/MePage/first_win_bkg_normal.png"/>
+        <Button x:Name="header" Grid.Row="2" HorizontalAlignment="Stretch">
+            <Button.Template>
+                <ControlTemplate>
+                    <ContentPresenter x:Name="ContentPresenter" />
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Content>
+                <Grid Grid.Row="2" Background="#FFFAFAFA">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="48"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" BorderThickness="0,0,0,0.5" BorderBrush="Gray">
+                        <RelativePanel>
+                            <TextBlock Margin="8,0" x:Name="te" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Text="艾欧尼亚" FontSize="18"/>
+                            <Image RelativePanel.LeftOf="te" RelativePanel.AlignBottomWith="te" RelativePanel.AlignTopWith="te" Width="20" Source="ms-appx:///Resources/region_icon_role_center.png"/>
+                            <control:ImageButton RelativePanel.RightOf="te" RelativePanel.AlignBottomWith="te" RelativePanel.AlignTopWith="te" Width="15" ImageSourceNormal="ms-appx:///Resources/MePage/arrow_fold_down_role_center_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/arrow_fold_down_role_center_pressed.png"/>
+                            <control:ImageButton RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12,0" Width="30" ImageSourceNormal="ms-appx:///Resources/MePage/share_role_center_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/share_role_center_pressed.png" />
+                        </RelativePanel>
+                    </Border>
+                    <Border Grid.Row="1" BorderThickness="0,0,0,0.5" BorderBrush="Gray">
+                        <RelativePanel>
+                            <Image x:Name="headerImage" RelativePanel.AlignLeftWithPanel="True" Source="ms-appx:///Resources/headimages/profileIcon1209.jpg" Margin="12"></Image>
+                            <TextBlock Text="{x:Bind MeViewModel.UserInfo.GameID,Mode=OneWay}" x:Name="gameId" RelativePanel.RightOf="headerImage" Margin="4,12,0,0" />
+                            <TextBlock Text="{x:Bind MeViewModel.UserInfo.Level,Converter={StaticResource LevelConverter}}" Foreground="#FF5E96DC" RelativePanel.RightOf="headerImage" x:Name="level"  RelativePanel.AlignBottomWith="headerImage" Margin="2,12,0,12"/>
+                            <Ellipse Width="8" Height="8" Fill="{x:Bind MeViewModel.UserInfo.GameStatus,Converter={StaticResource GameStatusToFillConverter}}" x:Name="ellipse" RelativePanel.RightOf="level" RelativePanel.AlignVerticalCenterWith="level" Margin="8"/>
+                            <TextBlock Text="{x:Bind MeViewModel.UserInfo.GameStatus,Converter={StaticResource GameStatusToString}}" Foreground="#FF5E96DC" RelativePanel.RightOf="ellipse" RelativePanel.AlignVerticalCenterWith="ellipse"/>
+                            <control:ImageButton RelativePanel.AlignRightWithPanel="True" Width="140" RelativePanel.AlignVerticalCenterWithPanel="True" ImageStretch="Fill" Grid.Column="1" Height="45" ImageSourceNormal="ms-appx:///Resources/MePage/first_win_bkg_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/first_win_bkg_pressed.png">
+                                <control:ImageButton.Content>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="首胜计时中" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12" Foreground="#FF3F4774" FontSize="18"/>
+                                        <TextBlock Text="首胜计时中" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12" Foreground="#FF3F4774" FontSize="18"/>
                                         <Image Height="15" Source="ms-appx:///Resources/MePage/first_win_arrow.png"/>
                                     </StackPanel>
-                                </Grid>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Grid>
-            </Border>
-            <ListBox Grid.Row="2" x:Name="listBox"
+                                </control:ImageButton.Content>
+                            </control:ImageButton>
+                        </RelativePanel>
+                    </Border>
+                    <ListBox Grid.Row="2" x:Name="listBox"
                              HorizontalAlignment="Stretch"
                              VerticalAlignment="Bottom"
+                             ItemContainerStyle="{StaticResource ListboxItemStyle}"
+                             Style="{StaticResource ListboxStyle}"
                              Background="#FFEAEAEA"
                              SelectedIndex="{Binding ElementName=flip,
                                                      Path=SelectedIndex,
                                                      Mode=TwoWay}" >
-                <ListBox.Items>
-                    <TextBlock Text="战绩"/>
-                    <TextBlock Text="能力"/>
-                    <TextBlock Text="资产"/>
-                </ListBox.Items>
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"></StackPanel>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-            </ListBox>
-        </Grid>
-        <!--标题栏-->
-        <Grid  Background="#FF242937" Grid.Row="0">
+                        <ListBox.Items>
+                            <TextBlock Text="战绩"/>
+                            <TextBlock Text="能力"/>
+                            <TextBlock Text="资产"/>
+                        </ListBox.Items>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </Grid>
+            </Button.Content>
+        </Button>
+        <Grid  Background="{ThemeResource TileBackground}" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.ColumnSpan="2" Text="我" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" FontSize="20"/>
+            <TextBlock Grid.ColumnSpan="2" Text="我" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource TileForeground}" FontSize="{ThemeResource TileFontsize}"/>
             <control:ImageButton Height="30" x:Name="btn_setting" Click="btn_setting_Click" Grid.Column="1" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/MePage/setting_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/setting_pressed.png"/>
         </Grid>
-        <!--头像栏-->
-        <Grid Height="100" Grid.Row="1">
-            <Grid.Background>
-                <ImageBrush ImageSource="ms-appx:///Resources/sns_info_background.jpg"/>
-            </Grid.Background>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Margin="12,0">
-                <Button.Template>
-                    <ControlTemplate>
-                        <RelativePanel>
-                            <Rectangle x:Name="rec" Width="80" Height="80" RadiusX="10" RadiusY="10">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="ms-appx:///Resources/icon_1.jpg"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <Border RelativePanel.AlignBottomWith="rec" RelativePanel.AlignRightWith="rec" CornerRadius="4" Height="20" Width="30" Background="Black">
-                                <TextBlock Text="1张" FontSize="16" HorizontalAlignment="Center" Foreground="White"/>
-                            </Border>
-                        </RelativePanel>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <RelativePanel Grid.Column="1">
-                <TextBlock RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Margin="14,20" Text="{x:Bind MeViewModel.UserName,Mode=OneWay}" Foreground="White" FontSize="15"/>
-                <Border Height="20" Width="35" Background="#ff34b4e3" CornerRadius="2" RelativePanel.AlignBottomWithPanel="True" Margin="14,20">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Margin="4,0,2,0" Height="12" Source="ms-appx:///Resources/MePage/peoplenearby_man.png" />
-                        <TextBlock Text="21" Foreground="White" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-                <Border RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12" Background="#FF1C2031" CornerRadius="2" BorderThickness="1" BorderBrush="#FF296C9E" Padding="4">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Width="20" Source="ms-appx:///Resources/sns_info_entry_self.png"/>
-                        <TextBlock Margin="4,0,12,0" Text="社区资料" FontSize="18" Foreground="White"/>
-                        <Image Height="15" Source="ms-appx:///Resources/MePage/arrow_right.png" />
-                    </StackPanel>
-                </Border>
-            </RelativePanel>
-        </Grid>
-
+        <Button x:Name="btn_Userinfo" Click="btn_Userinfo_Click" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Button.Template>
+                <ControlTemplate>
+                    <ContentPresenter x:Name="ContentPresenter" />
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Content>
+                <RelativePanel>
+                    <RelativePanel.Background>
+                        <ImageBrush ImageSource="ms-appx:///Resources/sns_info_background.jpg"/>
+                    </RelativePanel.Background>
+                    <RelativePanel x:Name="image" Margin="10">
+                        <Rectangle x:Name="rec" Width="80" Height="80" RadiusX="10" RadiusY="10">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="ms-appx:///Resources/heroheadimage/222_Web_0.jpg"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Border RelativePanel.AlignBottomWith="rec" RelativePanel.AlignRightWith="rec" CornerRadius="4" Height="20" Width="30" Background="Black">
+                            <TextBlock Text="1张" FontSize="16" HorizontalAlignment="Center" Foreground="White"/>
+                        </Border>
+                    </RelativePanel>
+                    <TextBlock Text="{x:Bind MeViewModel.UserInfo.UserName}" Foreground="White" FontSize="20" RelativePanel.RightOf="image" Margin="12,20"/>
+                    <Border Height="20" Width="35" Background="#ff34b4e3" CornerRadius="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="image" Margin="12,20">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Margin="4,0,2,0" Height="12" Source="ms-appx:///Resources/MePage/peoplenearby_man.png" />
+                            <TextBlock Text="21" Foreground="White" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <Border RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="12" Background="#FF1C2031" CornerRadius="2" BorderThickness="1" BorderBrush="#FF296C9E" Padding="4">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="20" Source="ms-appx:///Resources/sns_info_entry_self.png"/>
+                            <TextBlock Margin="4,0,0,0" Text="社区资料 >" FontSize="18" Foreground="White"/>
+                        </StackPanel>
+                    </Border>
+                </RelativePanel>
+            </Button.Content>
+        </Button>
 
     </Grid>
 

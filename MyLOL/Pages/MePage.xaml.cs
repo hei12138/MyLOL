@@ -25,9 +25,8 @@ namespace MyLOL
     public sealed partial class MePage : Page
     {
         //TODO 自定义的imageButton 可以显示图像，以及按下的图像
-         
 
-        //TODO
+
         //考虑将此页面做成自定义面板
         public MeViewModel MeViewModel { get; set; }
         private TranslateTransform _tt;
@@ -44,7 +43,7 @@ namespace MyLOL
             if (_tt == null)
             {
                 //似乎是在这里将位移值给页面
-                header.RenderTransform = _tt = new TranslateTransform();
+               header.RenderTransform = _tt = new TranslateTransform();
             }
         }
         private void OnChanged(object sender, PointerRoutedEventArgs e)
@@ -60,11 +59,17 @@ namespace MyLOL
             e.Handled = true;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             list = e.Parameter;
             frame = (e.Parameter as List<Frame>)[0];
             Frame frame2 = (e.Parameter as List<Frame>)[1];
+
+            var info= await Helper.StrogeHelper.GetPersonFile();
+            if (info != null)
+            {
+                MeViewModel.UserInfo = info;
+            }
             DataContext = MeViewModel;
         }
 
@@ -86,7 +91,17 @@ namespace MyLOL
             }
         }
 
-       
+        //胜率详情
+        private void btn_Winpro_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(typeof(WinProPage), list);
+        }
+
+        //用户详情
+        private void btn_Userinfo_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(typeof(UserInfoEditer), list);
+        }
     }
 
 }

@@ -8,18 +8,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     
-    <Grid Background="#FFEFEFF4">
+    <Grid Background="{ThemeResource PageBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF242937">
+        <Grid Grid.Row="0" Background="{ThemeResource TileBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <control:ImageButton Height="25" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
-            <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="关于"/>
+            <control:ImageButton Height="25" Width="40" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
+            <TextBlock Grid.ColumnSpan="2" FontSize="{ThemeResource TileFontsize}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource TileForeground}" Text="关于"/>
         </Grid>
         <RelativePanel Grid.Row="2" Padding="12">
             <RichTextBlock  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
@@ -37,6 +37,7 @@
                 <Paragraph FontSize="12">6.20为ButtonForLoL添加交互</Paragraph>
                 <Paragraph FontSize="12">添加顶部置顶栏</Paragraph>
                 <Paragraph FontSize="12">添加硬件后退</Paragraph>
+                <Paragraph FontSize="12">添加自定义数据</Paragraph>
             </RichTextBlock>
 
             <StackPanel RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True">

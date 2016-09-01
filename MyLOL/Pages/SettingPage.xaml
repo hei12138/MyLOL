@@ -9,25 +9,25 @@
     mc:Ignorable="d">
     
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource PageBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF242937">
+        <Grid Grid.Row="0" Background="{ThemeResource TileBackground}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <control:ImageButton Height="25" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
-            <TextBlock Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF967E5D" Text="设置"/>
+            <control:ImageButton Height="25" Width="40" x:Name="btn_back" Click="btn_back_Click" Grid.Column="0" HorizontalAlignment="Center" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
+            <TextBlock Grid.ColumnSpan="2" FontSize="{ThemeResource TileFontsize}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource TileForeground}" Text="设置"/>
         </Grid>
-        <StackPanel Grid.Row="1" Background="#FFEFEFF4">
+        <StackPanel Grid.Row="1">
             <control:ButtonForLOL x:Name="btn_severSelecter" Click="btn_severSelecter_Click" MainText="绑定大区" SecText="艾欧尼亚>" BorderThickness="0,0.5,0,0.5" BorderBrush="Gray" Background="White" Margin="0,12,0,12" Padding="12"/>
             <Border BorderBrush="Gray" BorderThickness="0,0.5,0,0.5"  Margin="0,12,0,12">
                 <StackPanel Background="White">
                     <control:ButtonForLOL MainText="消息推送设置" SecText=">" BorderThickness="0,0,0,0.5" Background="White" BorderBrush="Gray" Padding="12"/>
-                    <control:ButtonForLOL x:Name="btn_custom" Click="btn_custom_Click" MainText="隐私设置" SecText=">" BorderThickness="0,0,0,0.5" Background="White" BorderBrush="Gray" Padding="12"/>
+                    <control:ButtonForLOL x:Name="btn_custom" Click="btn_custom_Click" MainText="自定义" SecText=">" BorderThickness="0,0,0,0.5" Background="White" BorderBrush="Gray" Padding="12"/>
                     <Border Background="White" BorderThickness="0,0,0,0.5" BorderBrush="Gray" Padding="10">
                         <Grid>
                             <Grid.ColumnDefinitions>

@@ -85,14 +85,12 @@ namespace MyLOL.Controls
                     {
                         SetValue(BackImageOpacityProperty, 1);
                         SetValue(ForeImageOpacityProperty, 0);
-                        Background = new SolidColorBrush(Color.FromArgb(255, 214, 224, 233));
                         Foreground = new SolidColorBrush(Color.FromArgb(255, 68, 135, 194));
                     }
                     else
                     {
                         SetValue(BackImageOpacityProperty, 0);
                         SetValue(ForeImageOpacityProperty, 1);
-                        Background = new SolidColorBrush(Colors.Transparent);
                         Foreground = new SolidColorBrush(Colors.Black);
                     }
                     isClicked = value;

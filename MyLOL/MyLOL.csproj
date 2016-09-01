@@ -119,6 +119,7 @@
     <Content Include="Resources\heroheadimage\157_Web_0.jpg" />
     <Content Include="Resources\heroheadimage\222_Web_0.jpg" />
     <Content Include="Resources\heroheadimage\238_Web_0.jpg" />
+    <Content Include="Resources\heroheadimage\268_Web_0.jpg" />
     <Content Include="Resources\heroheadimage\39_Web_0.jpg" />
     <Content Include="Resources\icon_1.jpg" />
     <Content Include="Resources\icon_2.jpg" />
@@ -204,6 +205,12 @@
     <Content Include="Resources\region_icon_role_center.png" />
     <Content Include="Resources\role_detail_header.png" />
     <Content Include="Resources\share_role_center_normal.png" />
+    <Content Include="Resources\Skins\Aatrox_1.jpg" />
+    <Content Include="Resources\Skins\Ahri_6.jpg" />
+    <Content Include="Resources\Skins\Annie_1.jpg" />
+    <Content Include="Resources\Skins\Draven_4.jpg" />
+    <Content Include="Resources\Skins\LeeSin_3.jpg" />
+    <Content Include="Resources\Skins\Lucian_6.jpg" />
     <Content Include="Resources\sns_info_background.jpg" />
     <Content Include="Resources\sns_info_entry_self.png" />
     <Content Include="Resources\start_up.jpg" />
@@ -218,9 +225,8 @@
     <Compile Include="Controls\ColorDisplayer.cs" />
     <Compile Include="Controls\CommonHelper.cs" />
     <Compile Include="Controls\CustomToast.cs" />
-    <Compile Include="Controls\FlipView1.cs" />
+    <Compile Include="Controls\HeadSelecter.cs" />
     <Compile Include="Controls\ImageButton.cs" />
-    <Compile Include="Controls\MyPivot.cs" />
     <Compile Include="Controls\PageBase.cs" />
     <Compile Include="Controls\PowerDisplayer.cs" />
     <Compile Include="Controls\TapButton.cs" />
@@ -229,11 +235,14 @@
     <Compile Include="Converters\GameToTimesConverter.cs" />
     <Compile Include="Converters\IsClickedToOpacityConverter.cs" />
     <Compile Include="Converters\LevelConverter.cs" />
+    <Compile Include="Converters\RankToImageConverter.cs" />
+    <Compile Include="Converters\RankToTextBigConverter.cs" />
     <Compile Include="Converters\WinProToStringConverter.cs" />
     <Compile Include="Helper\NewsHelper.cs" />
-    <Compile Include="Helper\SerializeHelper.cs" />
+    <Compile Include="Helper\StrogeHelper.cs" />
     <Compile Include="Models\MatchInfo.cs" />
     <Compile Include="Models\NewsInfo.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -266,6 +275,12 @@
     </Compile>
     <Compile Include="Pages\SeverSelecterPage.xaml.cs">
       <DependentUpon>SeverSelecterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserInfoEditer.xaml.cs">
+      <DependentUpon>UserInfoEditer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WinProPage.xaml.cs">
+      <DependentUpon>WinProPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\InfoViewModel.cs" />
@@ -332,6 +347,19 @@
     <Page Include="Pages\SeverSelecterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserInfoEditer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WinProPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>

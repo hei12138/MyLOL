@@ -1,0 +1,44 @@
+﻿<control:PageBase
+    x:Class="MyLOL.Pages.WinProPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyLOL.Pages"
+    xmlns:control="using:MyLOL.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="{ThemeResource PageBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--标题栏-->
+        <Grid Grid.Row="0" Background="{ThemeResource TileBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <control:ImageButton Height="25" Width="40" x:Name="btn_back" Grid.Column="0" HorizontalAlignment="Center" Click="btn_back_Click" ImageSourceNormal="ms-appx:///Resources/nav_back_normal.png" ImageSourcePressed="ms-appx:///Resources/nav_back_pressed.png" />
+            <TextBlock Grid.ColumnSpan="2" FontSize="{ThemeResource TileFontsize}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{ThemeResource TileForeground}" Text="胜率详情"/>
+        </Grid>
+        <ScrollViewer ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.Row="1">
+            <StackPanel Orientation="Vertical" ManipulationMode="System,TranslateX">
+                <RelativePanel Height="50" Background="#FFEAEAEA">
+                    <Image x:Name="tag" Height="15" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="16,0,8,0" Source="ms-appx:///Resources/MePage/hero_text_tag.png" />
+                    <TextBlock RelativePanel.RightOf="tag" RelativePanel.AlignVerticalCenterWith="tag" Text="战绩" FontSize="20"/>
+                    <control:ImageButton Height="25" Margin="0,0,8,0" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignRightWithPanel="True" ImageSourceNormal="ms-appx:///Resources/MePage/ability_qa_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/ability_qa_press.png"/>
+                </RelativePanel>
+                <StackPanel Height="350" Background="White">
+                    <control:ColorDisplayer RelativePanel.AlignBottomWithPanel="True" WinPro="0.8" Text="胜53% 1236场"  Margin="0,6"/>
+                </StackPanel>
+                <RelativePanel Height="50" Background="#FFEAEAEA">
+                    <Image x:Name="tag2" Height="15" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="16,0,8,0" Source="ms-appx:///Resources/MePage/hero_text_tag.png" />
+                    <TextBlock RelativePanel.RightOf="tag2" RelativePanel.AlignVerticalCenterWith="tag2" Text="战绩" FontSize="20"/>
+                    <control:ImageButton Height="25" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,0,8,0" RelativePanel.AlignRightWithPanel="True" ImageSourceNormal="ms-appx:///Resources/MePage/ability_qa_normal.png" ImageSourcePressed="ms-appx:///Resources/MePage/ability_qa_press.png"/>
+                </RelativePanel>
+                <StackPanel Height="400" Background="White">
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</control:PageBase>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyLOL.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,26 +16,27 @@ using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
-namespace MyLOL
+namespace MyLOL.Pages
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class FriendPage : Page
+    public sealed partial class UserInfoEditer : PageBase
     {
-        public static FriendPage friendpage = null;
-        private FriendPage()
+        public UserInfoEditer()
         {
             this.InitializeComponent();
         }
-        public static FriendPage GetSingle()
+
+        private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-            if (friendpage == null)
-            {
-                friendpage = new FriendPage();
-            }
-            return friendpage;
+            this.Frame.Content = null;
+
         }
 
+        private void edit_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }

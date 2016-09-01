@@ -62,7 +62,7 @@ namespace MyLOL.Controls
 
         private void BasePage_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-
+            
             //操作x的位移绝对值
             double abs_delta = Math.Abs(e.Cumulative.Translation.X);
             //X轴的直线速度
@@ -102,6 +102,7 @@ namespace MyLOL.Controls
             Storyboard.SetTargetProperty(doubleanimation, "X");
             s.Children.Add(doubleanimation);
             s.Begin();
+            //e.Handled = true;
         }
 
         private void Doubleanimation_Completed(object sender, object e)
