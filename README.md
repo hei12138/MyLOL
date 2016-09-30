@@ -2,7 +2,8 @@
 
 以下是部分预览图片
 http://github.com/hei12138/your-repository/raw/master/images-folder/xxx.png
-https://github.com/hei12138/MyLOL/blob/master/MyLOL/ImagePreview/wp_ss_20160930_0001.png
+(http://github.com/yourname/your-repository/raw/master/images-folder/xxx.png)
+https://github.com/hei12138/MyLOL/raw/master/MyLOL/ImagePreview/wp_ss_20160930_0001.png
 
 要自己设定的：yourname, your-repository, your-folder, xxx.png。
 
