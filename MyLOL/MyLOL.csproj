@@ -100,6 +100,11 @@
     <Content Include="Assets\Square71x71Logo.scale-200.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="ImagePreview\wp_ss_20160930_0001.png" />
+    <Content Include="ImagePreview\wp_ss_20160930_0002.png" />
+    <Content Include="ImagePreview\wp_ss_20160930_0003.png" />
+    <Content Include="ImagePreview\wp_ss_20160930_0004.png" />
+    <Content Include="ImagePreview\wp_ss_20160930_0005.png" />
     <Content Include="Resources\123.jpg" />
     <Content Include="Resources\arrow_fold_down_role_center_normal.png" />
     <Content Include="Resources\barcode_icon.png" />
@@ -246,6 +251,9 @@
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\BlankPage1.xaml.cs">
+      <DependentUpon>BlankPage1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CustomPage.xaml.cs">
       <DependentUpon>CustomPage.xaml</DependentUpon>
     </Compile>
@@ -305,6 +313,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BlankPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -371,7 +383,12 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MyControls\MyControls.csproj">
+      <Project>{768d1edf-e3ea-4cb9-9394-5b3b896c0905}</Project>
+      <Name>MyControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

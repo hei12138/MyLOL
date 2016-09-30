@@ -152,7 +152,7 @@ namespace MyLOL.Controls
             Brush brush = (Brush)Application.Current.Resources["SystemControlBackgroundAccentBrush"];
 
 
-            toastGrid = new Grid() {Height=200,Width=50, Background = gridbrush, VerticalAlignment = VerticalAlignment.Bottom, Margin=new Thickness (0,0,0,40), HorizontalAlignment = HorizontalAlignment.Center };
+            toastGrid = new Grid() {Height=50,Width=20*Message.Length, Background = gridbrush, VerticalAlignment = VerticalAlignment.Bottom, Margin=new Thickness (0,0,0,40), HorizontalAlignment = HorizontalAlignment.Center };
             toastBorder = new Border()
             {
                 CornerRadius = new CornerRadius(5),
